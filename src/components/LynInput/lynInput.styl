@@ -1,0 +1,49 @@
+.lyn-input
+    color $lyn-grey400
+    display flex
+    box-sizing border-box
+    padding 0.75rem 1rem
+    width 100%
+    height 2.625rem
+    background $lyn-white
+    border-radius 0.5rem
+    border 0.125rem solid $lyn-grey200
+    @extend .lyn-body-font
+    transition-ease()
+    &::placeholder
+        color $lyn-grey300
+    &:hover
+        border 0.125rem solid $lyn-grey300
+        lyn-shadow-small()
+    &:focus
+        border 0.125rem solid $primary-lyn-blue
+        outline none
+        lyn-shadow-small-blue()
+
+    &:disabled
+        background $lyn-grey050
+        border 0.125rem solid $lyn-grey200
+    &.hasError
+        border 0.125rem solid $lyn-alert300
+
+    // &.search
+    //     svg
+    //         position absolute
+    //         left 1rem
+    //         top 50%
+    //         transform translateY(-50%)
+    //         path
+    //             color $lyn-grey300
+        
+    //     padding-left 2.5rem
+
+    &.lyn-grey
+        background $lyn-grey100
+        &:hover, &:focus
+            background $lyn-grey200
+            border-color $lyn-grey300
+
+    &.small
+        height 2.125rem
+        padding 0.5rem
+        @extend .lyn-body2-font

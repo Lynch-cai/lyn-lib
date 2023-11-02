@@ -1,0 +1,62 @@
+.lyn-select-container
+    .select
+        position relative
+        .angle-down
+            position absolute
+            top 50%
+            transform translateY(-50%)
+            pointer-events none
+            color $lyn-grey300
+
+        select
+            width 100%
+            background $lyn-white
+            border-radius 0.5rem
+            border 0.125rem solid $lyn-grey200
+            box-sizing border-box
+            -webkit-appearance none
+            -moz-appearance none
+            text-indent 0.0625rem
+            text-overflow ''
+            color $lyn-grey400
+            @extend .lyn-body-font
+            transition-ease()
+            &:hover
+                lyn-shadow-extra-small()
+                border 0.125rem solid $lyn-grey300
+
+            &:focus
+                outline none
+                lyn-shadow-small-blue()
+                border 0.125rem solid $primary-lyn-blue
+
+            &::-ms-expand
+                display none
+
+            &.no-selection
+                color $lyn-grey300
+
+    &.medium
+        .select
+            .angle-down
+                right 1rem
+            select
+                height 2.625rem
+                padding 0.5rem 1rem
+                @extend .lyn-body-font
+    
+    &.small
+        .select
+            .angle-down
+                right 0.5rem
+                font-size: 0.75rem
+            select
+                height 2.125rem
+                padding 0.25rem 0.5rem
+                @extend .lyn-body2-font
+
+    &.hasError
+        .select
+            select
+                border 0.125rem solid $lyn-alert300
+

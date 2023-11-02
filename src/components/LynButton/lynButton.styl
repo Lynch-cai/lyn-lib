@@ -1,0 +1,108 @@
+.lyn-button
+    position relative
+    display flex
+    justify-content center
+    align-items center
+    gap 0.75rem
+    height fit-content
+    width fit-content
+    border-radius 0.5rem
+    box-sizing border-box
+    border 0.125rem solid transparent
+    @extend .lyn-button-font
+    transition-ease()
+    &:hover
+        cursor pointer
+
+    /* ====================
+        Props: isDisabled
+        Default: false
+    ==================== */
+    &:disabled
+        cursor not-allowed
+
+    /* ====================
+        Props: type
+        Default: primary
+    ==================== */ 
+    &.primary
+        color $lyn-white
+        background $primary-lyn-blue
+        &:hover, &:focus
+            background $lyn-blue400
+            lyn-shadow-small-blue()
+
+        &:active
+            background $lyn-blue600
+
+        &:disabled
+            background $lyn-grey300 !important
+
+    &.secondary
+        background $lyn-white
+        color $primary-lyn-blue
+        border 0.125rem solid $primary-lyn-blue
+        &:hover, &:focus
+            background $lyn-grey050
+            lyn-shadow-small-blue()
+        
+        &:active
+            background $lyn-grey100
+
+        &:disabled
+            background $lyn-grey100 !important
+
+    &.tertiary
+        box-sizing border-box
+        transition-ease()
+        color $lyn-grey400
+
+        &:hover, &:focus
+            outline none
+            background $lyn-grey050
+            color $primary-lyn-blue
+
+        &:active
+            background $lyn-grey100
+
+        &:disabled
+            color $lyn-grey300
+            background $lyn-white !important
+
+    &.error
+        color $lyn-alert300
+        padding 0
+        &:hover
+            color $lyn-alert200
+
+    /* ====================
+        Props: size
+        Default: medium
+    ==================== */
+    &.medium
+        padding 0.625rem 2rem
+        min-height 2.5rem
+
+    &.small
+        min-height 2.125rem
+        padding 0.4375rem 1.25rem
+        @extend .lyn-body2-semibold-font
+
+
+    /* ====================
+        Props: isLoading
+        Default: false
+    ==================== */
+    .button-text
+        transition-ease()
+        &.hide
+            visibility hidden
+            opacity 0
+            pointer-events none
+            user-select none
+
+    .lyn-loading
+        position absolute
+        top 50%
+        left 50%
+        transform translate(-50%, -50%)

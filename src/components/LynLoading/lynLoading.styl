@@ -1,0 +1,63 @@
+// source : https://loading.io/css/
+.lyn-loading
+    display inline-block
+    position relative
+    width 2rem
+    height 1.125rem
+
+    &.lyn-white
+        div
+            background $lyn-white
+
+    &.lyn-blue
+        div
+            background $primary-lyn-blue
+
+    &.lyn-black
+        div
+            background $lyn-primary-black
+
+    div
+        position absolute
+        top calc(50% - 0.125rem)
+        width 0.25rem
+        height 0.25rem
+        border-radius 50%
+        background $lyn-white
+        animation-timing-function cubic-bezier(0, 1, 1, 0)
+
+        &:nth-child(1)
+            left 0.25rem
+            animation lyn-loading1 0.6s infinite
+
+        &:nth-child(2)
+            left 0.25rem
+            animation lyn-loading2 0.6s infinite
+
+        &:nth-child(3)
+            left 1rem
+            animation lyn-loading2 0.6s infinite
+
+        &:nth-child(4)
+            left 1.75rem
+            animation lyn-loading3 0.6s infinite
+
+@keyframes lyn-loading1
+    0%
+        transform scale(0)
+    100%
+        transform scale(1)
+    
+
+@keyframes lyn-loading3
+    0%
+        transform scale(1)
+    100%
+        transform scale(0)
+    
+
+@keyframes lyn-loading2
+    0%
+        transform translate(0, 0)
+    100%
+        transform translate(0.75rem, 0)

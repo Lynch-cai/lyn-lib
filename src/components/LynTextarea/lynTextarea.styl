@@ -1,0 +1,27 @@
+.lyn-textarea
+    display flex
+    box-sizing border-box
+    padding 0.75rem 1rem
+    background $lyn-white
+    border-radius 0.5rem
+    border 0.125rem solid $lyn-grey200
+    width 100%
+    min-width: 100%
+    min-height 5rem
+    max-width 100%
+    @extend .lyn-body-font
+    transition-ease(border)
+    &::placeholder
+        color $lyn-grey300
+    &:hover
+        border 0.125rem solid $lyn-grey300
+        lyn-shadow-extra-small()
+    &:focus
+        border 0.125rem solid $primary-lyn-blue
+        outline none
+        lyn-shadow-small-blue()
+    &:disabled
+        background $lyn-grey100
+        border 0.125rem solid $lyn-grey300
+    &.hasError
+        border 0.125rem solid $lyn-alert300

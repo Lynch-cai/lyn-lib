@@ -1,0 +1,74 @@
+transition-ease()
+    transition-property arguments
+    transition-duration 0.2s
+    transition-timing-function ease
+
+transition-fast-ease()
+    transition-property arguments
+    transition-duration 0.1s
+    transition-timing-function ease
+
+transition-slow-ease()
+    transition-property arguments
+    transition-duration 0.4s
+    transition-timing-function ease
+    
+
+
+transition-ease-quart()
+    transition-property arguments
+    transition-duration 0.4s
+    transition-timing-function cubic-bezier(0.76, 0, 0.24, 1)
+
+
+
+transition-ease-expo()
+    transition-property arguments
+    transition-duration 0.4s
+    transition-timing-function cubic-bezier(0.87, 0, 0.13, 1)
+
+
+@keyframes fade-in
+    0% 
+        opacity 0
+    100%
+        opacity 1
+
+
+.reveal
+    animation reveal 1.5s 1 linear
+    @keyframes reveal
+        0%
+            border-radius: 0.25rem
+            outline 0.125rem solid rgba(0, 0, 0, 0)
+            outline-offset 0
+            background transparent
+            box-shadow 0 0px 4px 4px transparent;
+        15%
+            border-radius: 0.25rem
+            outline 0.125rem solid rgba(49, 82, 232, 1)
+            outline-offset 0.25rem
+            background $lyn-grey100
+            box-shadow 0 0px 4px 4px $lyn-grey100;
+        20%
+            border-radius: 0.25rem
+            outline 0.125rem solid rgba(0, 0, 0, 0)
+            outline-offset 0.25rem
+            background $lyn-grey100
+            box-shadow 0 0px 4px 4px $lyn-grey100;
+        25%
+            border-radius: 0.25rem
+            outline 0.125rem solid rgba(49, 82, 232, 1)
+            outline-offset 0.25rem
+            background $lyn-grey100
+            box-shadow 0 0px 4px 4px $lyn-grey100;
+        70%
+            border-radius: 0.25rem
+            outline 0 solid rgba(0, 0, 0, 0)
+            outline-offset 1rem
+            background transparent
+            box-shadow 0 0px 4px 4px transparent;
+        100%
+            border-radius: 0.25rem
+            outline 0 solid rgba(0, 0, 0, 0)
+            outline-offset 1rem

@@ -1,0 +1,586 @@
+/*
+Font custom pour les icones
+Les icones sont designées sur Figma et générées via https://icomoon.io/
+
+
+Comment utiliser les icones ?
+  Exemple d'usage classique :
+    <span class="icon-search-12px"><span>
+
+  Exemple d'usage pour les icones avec plusieurs couches (cas très rare) :
+    <span class="icon-file-active-24px app-menu-icon-active">
+      <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span>
+    </span>
+
+  Pour savoir le nombre de couche, il faut regarder dans icon_demo.html situé /docs/icomoon/icon_demo.html
+
+
+
+Comment changer la couleur d'une icone ?
+  Notre fichier vue.js : 
+  <span class="icon-calendar-12px"><span>
+
+  Notre fichier .styl :
+  .icon-calendar-12px::before
+    color lyn-white
+
+
+
+Comment mettre à jour les icones ?
+  1. Se rendre sur le Figma du projet : https://www.figma.com/file/McxHNJK1seEej7LGSKL7LZ/Coover---Espace-facturation?type=design&node-id=1134%3A5953&t=5iiRCjYC84e0YgXa-1
+  2. Exporter les icones en SVG pour chaque taille (12px, 16px, 24px)
+  3. Renommer pour toutes les icones de "16px-search.svg" en "search-16px.svg"
+    IMPORTANT : La taille de l'icone doit être en dernier dans le nom du fichier car sinon les icônes déjà présents dans le projet ne s'afficheront plus !
+  4. Aller sur https://icomoon.io/app
+  5. Importer les icones
+  6. Selectionner les icones à exporter
+  7. Cliquer sur "Generate font"
+  8. Cliquer sur "Preferences"
+  9. Changer le nom de la font en "Lyn"
+  10: Télécharger la font
+  11: Remplacer le fichier "Lyn.ttf", "Lyn.woff", "Lyn.eot", "Lyn.svg" dans le dossier "assets/fonts" du projet
+  12: Copier coller le code du fichier "style.css" dans ce fichier en faisant attention au chemin des fonts
+
+ ATTENTION : Les icônes doivent être mis à plat en vectoriel pour être utilisé comme des fonts
+ Pour les convertir : 
+ - Sélectionner les tracées d'une icône
+ - Clique droit, "Outline stroke"
+ - Clique droit, "Flatten"
+*/
+
+[class^="icon-"][class$="-12px"],[class*="-12px "],
+[class*=" icon-"][class$="-12px"],[class*="-12px "]
+  display flex
+  align-items center
+  height 0.75rem
+  &:before
+    font-size 0.75rem
+
+  [class^="path"]
+    &:before
+      font-size 0.75rem
+
+[class^="icon-"][class$="-16px"],[class*="-16px "],
+[class*=" icon-"][class$="-16px"],[class*="-16px "]
+  display flex
+  align-items center
+  height 1rem
+  &:before
+    font-size 1rem;
+
+  [class^="path"]
+    &:before
+      font-size 1rem
+
+[class^="icon-"][class$="-24px"],[class*="-24px "],
+[class*=" icon-"][class$="-24px"],[class*="-24px "]
+  display flex
+  align-items center
+  height 1.5rem
+  &::before
+    font-size 1.5rem;
+
+  [class^="path"]
+    &::before
+      font-size 1.5rem
+
+// Copier à partir d'ici
+
+@font-face {
+  font-family: 'Lyn';
+  src:  url('@/assets/fonts/Lyn.eot');
+  src:  url('@/assets/fonts/Lyn.eot') format('embedded-opentype'),
+  url('@/assets/fonts/Lyn.ttf') format('truetype'),
+  url('@/assets/fonts/Lyn.woff') format('woff'),
+  url('@/assets/fonts/Lyn.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Lyn' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-down-12px:before {
+  content: "\e91d";
+  color: #5a606f;
+}
+.icon-arrow-left-12px:before {
+  content: "\e91e";
+  color: #5a606f;
+}
+.icon-arrow-right-12px:before {
+  content: "\e91f";
+  color: #5a606f;
+}
+.icon-arrow-up-12px:before {
+  content: "\e920";
+  color: #5a606f;
+}
+.icon-calendar-12px:before {
+  content: "\e921";
+  color: #5a606f;
+}
+.icon-check-12px:before {
+  content: "\e922";
+  color: #5a606f;
+}
+.icon-check-circle-12px:before {
+  content: "\e923";
+  color: #5a606f;
+}
+.icon-chevron-down-fill-12px:before {
+  content: "\e924";
+  color: #5a606f;
+}
+.icon-chevron-down-line-12px:before {
+  content: "\e925";
+  color: #5a606f;
+}
+.icon-chevron-left-12px:before {
+  content: "\e926";
+  color: #5a606f;
+}
+.icon-chevron-right-12px:before {
+  content: "\e927";
+  color: #5a606f;
+}
+.icon-chevron-up-12px:before {
+  content: "\e928";
+  color: #5a606f;
+}
+.icon-close-12px:before {
+  content: "\e929";
+  color: #5a606f;
+}
+.icon-euros-12px:before {
+  content: "\e92a";
+  color: #5a606f;
+}
+.icon-minus-12px:before {
+  content: "\e92b";
+  color: #5a606f;
+}
+.icon-plus-12px:before {
+  content: "\e92c";
+  color: #5a606f;
+}
+.icon-search-12px:before {
+  content: "\e92d";
+  color: #5a606f;
+}
+.icon-help-16px:before {
+  content: "\e971";
+  color: #5a606f;
+}
+.icon-see-16px:before {
+  content: "\e96e";
+  color: #5a606f;
+}
+.icon-cancel-16px:before {
+  content: "\e96f";
+  color: #5a606f;
+}
+.icon-duplicate-16px:before {
+  content: "\e970";
+  color: #5a606f;
+}
+.icon-save-16px:before {
+  content: "\e96d";
+  color: #5a606f;
+}
+.icon-export-csv-16px:before {
+  content: "\e911";
+  color: #5a606f;
+}
+.icon-mail-16px:before {
+  content: "\e96c";
+  color: #5a606f;
+}
+.icon-file-invoice-dollar-solid-16px:before {
+  content: "\e96b";
+  color: #5a606f;
+}
+.icon-arrow-down-16px:before {
+  content: "\e900";
+  color: #5a606f;
+}
+.icon-arrow-left-16px:before {
+  content: "\e901";
+  color: #5a606f;
+}
+.icon-arrow-right-16px:before {
+  content: "\e902";
+  color: #5a606f;
+}
+.icon-arrow-up-16px:before {
+  content: "\e903";
+  color: #5a606f;
+}
+.icon-building-16px:before {
+  content: "\e904";
+  color: #5a606f;
+}
+.icon-calendar-16px:before {
+  content: "\e905";
+  color: #5a606f;
+}
+.icon-cash-16px:before {
+  content: "\e906";
+  color: #5a606f;
+}
+.icon-check-16px:before {
+  content: "\e907";
+  color: #5a606f;
+}
+.icon-chevron-down-16px:before {
+  content: "\e908";
+  color: #5a606f;
+}
+.icon-chevron-left-16px:before {
+  content: "\e909";
+  color: #5a606f;
+}
+.icon-chevron-right-16px:before {
+  content: "\e90a";
+  color: #5a606f;
+}
+.icon-chevron-up-16px:before {
+  content: "\e90b";
+  color: #5a606f;
+}
+.icon-circle-16px:before {
+  content: "\e90c";
+  color: #5a606f;
+}
+.icon-close-16px:before {
+  content: "\e90d";
+  color: #5a606f;
+}
+.icon-download-16px:before {
+  content: "\e90e";
+  color: #5a606f;
+}
+.icon-euros-16px:before {
+  content: "\e90f";
+  color: #5a606f;
+}
+.icon-file-16px:before {
+  content: "\e910";
+  color: #5a606f;
+}
+.icon-minus-16px:before {
+  content: "\e912";
+  color: #5a606f;
+}
+.icon-pencil-16px:before {
+  content: "\e913";
+  color: #5a606f;
+}
+.icon-plus-16px:before {
+  content: "\e914";
+  color: #5a606f;
+}
+.icon-printer-16px:before {
+  content: "\e915";
+  color: #5a606f;
+}
+.icon-profile-16px:before {
+  content: "\e916";
+  color: #5a606f;
+}
+.icon-search-16px:before {
+  content: "\e917";
+  color: #5a606f;
+}
+.icon-share-16px:before {
+  content: "\e918";
+  color: #5a606f;
+}
+.icon-shopping-bag-16px:before {
+  content: "\e919";
+  color: #5a606f;
+}
+.icon-time-16px:before {
+  content: "\e91a";
+  color: #5a606f;
+}
+.icon-trash-16px:before {
+  content: "\e91b";
+  color: #5a606f;
+}
+.icon-lyn-warning-16px:before {
+  content: "\e91c";
+  color: #5a606f;
+}
+.icon-arrow-down-24px:before {
+  content: "\e92e";
+  color: #5a606f;
+}
+.icon-arrow-left-24px:before {
+  content: "\e92f";
+  color: #5a606f;
+}
+.icon-arrow-right-24px:before {
+  content: "\e930";
+  color: #5a606f;
+}
+.icon-arrow-up-24px:before {
+  content: "\e931";
+  color: #5a606f;
+}
+.icon-calendar-24px:before {
+  content: "\e932";
+  color: #5a606f;
+}
+.icon-check-24px:before {
+  content: "\e933";
+  color: #5a606f;
+}
+.icon-chevron-down-24px:before {
+  content: "\e934";
+  color: #5a606f;
+}
+.icon-chevron-left-24px:before {
+  content: "\e935";
+  color: #5a606f;
+}
+.icon-chevron-right-24px:before {
+  content: "\e936";
+  color: #5a606f;
+}
+.icon-chevron-up-24px:before {
+  content: "\e937";
+  color: #5a606f;
+}
+.icon-circle-check-24px:before {
+  content: "\e938";
+  color: #5a606f;
+}
+.icon-clients-active-24px .path1:before {
+  content: "\e939";
+  color: rgb(205, 204, 252);
+}
+.icon-clients-active-24px .path2:before {
+  content: "\e93a";
+  margin-left: -0.9599609375em;
+  color: rgb(49, 82, 232);
+}
+.icon-clients-active-24px .path3:before {
+  content: "\e93b";
+  margin-left: -0.9599609375em;
+  color: rgb(49, 82, 232);
+}
+.icon-clients-active-24px .path4:before {
+  content: "\e93c";
+  margin-left: -0.9599609375em;
+  color: rgb(49, 82, 232);
+}
+.icon-clients-active-24px .path5:before {
+  content: "\e93d";
+  margin-left: -0.9599609375em;
+  color: rgb(49, 82, 232);
+}
+.icon-clients-active-24px .path6:before {
+  content: "\e93e";
+  margin-left: -0.9599609375em;
+  color: rgb(49, 82, 232);
+}
+.icon-clients-active-24px .path7:before {
+  content: "\e93f";
+  margin-left: -0.9599609375em;
+  color: rgb(49, 82, 232);
+}
+.icon-clients-default-24px:before {
+  content: "\e940";
+}
+.icon-clients-hover-24px:before {
+  content: "\e941";
+  color: #3152e8;
+}
+.icon-close-24px:before {
+  content: "\e942";
+  color: #5a606f;
+}
+.icon-dashboard-active-24px .path1:before {
+  content: "\e943";
+  color: rgb(205, 204, 252);
+}
+.icon-dashboard-active-24px .path2:before {
+  content: "\e944";
+  margin-left: -0.9599609375em;
+  color: rgb(49, 82, 232);
+}
+.icon-dashboard-active-24px .path3:before {
+  content: "\e945";
+  margin-left: -0.9599609375em;
+  color: rgb(205, 204, 252);
+}
+.icon-dashboard-active-24px .path4:before {
+  content: "\e946";
+  margin-left: -0.9599609375em;
+  color: rgb(49, 82, 232);
+}
+.icon-dashboard-active-24px .path5:before {
+  content: "\e947";
+  margin-left: -0.9599609375em;
+  color: rgb(205, 204, 252);
+}
+.icon-dashboard-active-24px .path6:before {
+  content: "\e948";
+  margin-left: -0.9599609375em;
+  color: rgb(49, 82, 232);
+}
+.icon-dashboard-active-24px .path7:before {
+  content: "\e949";
+  margin-left: -0.9599609375em;
+  color: rgb(205, 204, 252);
+}
+.icon-dashboard-active-24px .path8:before {
+  content: "\e94a";
+  margin-left: -0.9599609375em;
+  color: rgb(49, 82, 232);
+}
+.icon-dashboard-default-24px:before {
+  content: "\e94b";
+}
+.icon-dashboard-hover-24px:before {
+  content: "\e94c";
+  color: #3152e8;
+}
+.icon-download-24px:before {
+  content: "\e94d";
+  color: #5a606f;
+}
+.icon-euros-24px:before {
+  content: "\e94e";
+  color: #5a606f;
+}
+.icon-file-active-24px .path1:before {
+  content: "\e94f";
+  color: rgb(205, 204, 252);
+}
+.icon-file-active-24px .path2:before {
+  content: "\e950";
+  margin-left: -0.9599609375em;
+  color: rgb(205, 204, 252);
+}
+.icon-file-active-24px .path3:before {
+  content: "\e951";
+  margin-left: -0.9599609375em;
+  color: rgb(205, 204, 252);
+}
+.icon-file-active-24px .path4:before {
+  content: "\e952";
+  margin-left: -0.9599609375em;
+  color: rgb(49, 82, 232);
+}
+.icon-file-default-24px:before {
+  content: "\e953";
+}
+.icon-file-hover-24px:before {
+  content: "\e954";
+  color: #3152e8;
+}
+.icon-file-invoice-dollar-solid-1-24px:before {
+  content: "\e955";
+  color: #5a606f;
+}
+.icon-folder-active-24px .path1:before {
+  content: "\e956";
+  color: rgb(205, 204, 252);
+}
+.icon-folder-active-24px .path2:before {
+  content: "\e957";
+  margin-left: -0.9599609375em;
+  color: rgb(49, 82, 232);
+}
+.icon-folder-default-24px:before {
+  content: "\e958";
+}
+.icon-folder-hover-24px:before {
+  content: "\e959";
+  color: #3152e8;
+}
+.icon-loggout-24px:before {
+  content: "\e95a";
+}
+.icon-minus-24px:before {
+  content: "\e95b";
+  color: #5a606f;
+}
+.icon-plus-24px:before {
+  content: "\e95c";
+  color: #5a606f;
+}
+.icon-printer-24px:before {
+  content: "\e95d";
+  color: #5a606f;
+}
+.icon-search-24px:before {
+  content: "\e95e";
+  color: #5a606f;
+}
+.icon-settings-active-24px .path1:before {
+  content: "\e95f";
+  color: rgb(205, 204, 252);
+}
+.icon-settings-active-24px .path2:before {
+  content: "\e960";
+  margin-left: -0.9599609375em;
+  color: rgb(49, 82, 232);
+}
+.icon-settings-active-24px .path3:before {
+  content: "\e961";
+  margin-left: -0.9599609375em;
+  color: rgb(205, 204, 252);
+}
+.icon-settings-active-24px .path4:before {
+  content: "\e962";
+  margin-left: -0.9599609375em;
+  color: rgb(49, 82, 232);
+}
+.icon-settings-default-24px:before {
+  content: "\e963";
+}
+.icon-settings-hover-24px:before {
+  content: "\e964";
+  color: #3152e8;
+}
+.icon-share-24px:before {
+  content: "\e965";
+  color: #5a606f;
+}
+.icon-shopping-active-24px .path1:before {
+  content: "\e966";
+  color: rgb(205, 204, 252);
+}
+.icon-shopping-active-24px .path2:before {
+  content: "\e967";
+  margin-left: -0.9599609375em;
+  color: rgb(49, 82, 232);
+}
+.icon-shopping-active-24px .path3:before {
+  content: "\e968";
+  margin-left: -0.9599609375em;
+  color: rgb(49, 82, 232);
+}
+.icon-shopping-default-24px:before {
+  content: "\e969";
+}
+.icon-shopping-hover-24px:before {
+  content: "\e96a";
+  color: #3152e8;
+}
