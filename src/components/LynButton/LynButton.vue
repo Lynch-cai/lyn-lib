@@ -1,11 +1,4 @@
 <script lang="ts">
-/*
-    Example usage:
-    <LynButton type="primary" size="medium" @click="handleClick" :isLoading="isLoading" :isDisabled="isDisabled">
-        Click me
-    </LynButton>
-*/
-
 import { defineComponent, PropType } from "vue";
 import LynLoading from "@/components/LynLoading/LynLoading.vue";
 import { Type, Size } from "./types";
@@ -34,7 +27,6 @@ export default defineComponent({
     data: () => ({
         LynLoadingColor,
     }),
-
     methods: {
         focus() {
             (this.$refs.button as HTMLButtonElement).focus();

@@ -1,8 +1,13 @@
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
     props: {
         columns: Number,
-        hasError: Boolean,
+        hasError: {
+            type: Boolean,
+            default: false,
+        },
         id: String,
         maxlength: Number,
         placeholder: String,
@@ -10,7 +15,7 @@ export default {
         value: [String, Number],
     },
     data: () => ({
-        childValue: "",
+        childValue: "" as string | number | undefined,
     }),
     mounted() {
         this.childValue = this.value;
@@ -18,7 +23,7 @@ export default {
 
     methods: {
         focus() {
-            this.$refs.input.focus();
+            (this.$refs.textarea as HTMLTextAreaElement).focus();
         },
     },
     watch: {
@@ -29,7 +34,7 @@ export default {
             this.childValue = this.value;
         },
     },
-};
+});
 </script>
 
 <template>

@@ -1,0 +1,39 @@
+.lyn-switch-container
+    position relative
+    width 3.25rem
+    height 1.625rem
+    border-radius 100rem
+    background $lyn-grey200
+    cursor pointer
+    transition-ease()
+    &:hover, &:focus
+        background $lyn-grey300
+        shadow-extra-small()
+
+    &:active
+        .switch
+            width 1.375rem
+            transform translateX(0)
+
+    &.active
+        background $lyn-primary-blue
+        &:hover, &:focus
+            background $lyn-blue400
+            shadow-small-blue()
+
+        &:active
+            .switch
+                width 1.375rem
+                transform translateX(100%)
+        .switch
+            transform translateX(calc(100% + 0.5rem))
+
+    .switch
+        position absolute
+        left 0.25rem
+        top 0.25rem
+        width 1.125rem
+        height 1.125rem
+        border-radius 100rem
+        background $lyn-white
+        transition-ease()

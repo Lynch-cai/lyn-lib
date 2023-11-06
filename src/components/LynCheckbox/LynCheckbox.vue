@@ -1,9 +1,4 @@
 <script lang="ts">
-/* 
-    Example usage:
-    <LynCheckbox :v-model:value="checkboxValue" label="I read and I Accept TOS" />
-*/
-
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -53,7 +48,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <label class="lyn-checkbox-container" :class="{ hasError: hasError }">
+    <label class="lyn-checkbox-container" :class="{ 'has-error': hasError }">
         <div class="checkbox">
             <input ref="checkbox" class="checkbox" type="checkbox" v-model="childValue" :id="id" :required="required" />
             <label :for="id">

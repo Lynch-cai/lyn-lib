@@ -5,6 +5,6 @@ export enum Size {
 
 export interface Option {
     value: string;
-    text: string;
+    label: string;
     disabled?: boolean;
 }

@@ -1,19 +1,16 @@
 import { Meta, StoryObj } from "@storybook/vue3";
-import LynCheckbox from "./LynCheckbox.vue";
+import LynSwitch from "./LynSwitch.vue";
 import { StorybookSourceUtils } from "@/utils/storybook.utils";
 
-type Story = StoryObj<typeof LynCheckbox>;
+type Story = StoryObj<typeof LynSwitch>;
 
-const meta: Meta<typeof LynCheckbox> = {
-    title: "LynCheckbox",
-    component: LynCheckbox,
+const meta: Meta<typeof LynSwitch> = {
+    title: "LynSwitch",
+    component: LynSwitch,
     tags: ["autodocs"],
     argTypes: {
         value: { control: "boolean" },
-        label: {},
-        id: {},
-        required: { control: "boolean" },
-        hasError: { control: "boolean" },
+        id: String,
     },
     parameters: {
         docs: {
@@ -32,19 +29,13 @@ export default meta;
 export const Default: Story = {
     args: {
         value: false,
-        label: "Default",
-        id: "default",
-        required: false,
-        hasError: false,
+        // id: null,
     },
 };
 
 export const Checked: Story = {
     args: {
         value: true,
-        label: "Default",
-        id: "default",
-        required: false,
-        hasError: false,
+        // id: null,
     },
 };

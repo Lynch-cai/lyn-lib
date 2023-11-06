@@ -1,10 +1,14 @@
-import { Story } from "../IStory";
+import { Meta, StoryObj } from "@storybook/vue3";
 import LynInput from "./LynInput.vue";
 import { Background, Size, Type } from "./types";
+import { StorybookSourceUtils } from "@/utils/storybook.utils";
 
-export default {
+type Story = StoryObj<typeof LynInput>;
+
+const meta: Meta<typeof LynInput> = {
     title: "LynInput",
     component: LynInput,
+    tags: ["autodocs"],
     argTypes: {
         autocomplete: {},
         background: { options: Background },
@@ -19,97 +23,116 @@ export default {
         type: { options: Type },
         value: {},
     },
-};
-
-const Template = (args: unknown) => ({
-    components: { LynInput },
-    setup() {
-        return { args };
+    parameters: {
+        docs: {
+            source: {
+                transform: (src: string) => {
+                    src = StorybookSourceUtils.convertValueToModelValue(src, "string");
+                    return src;
+                },
+            },
+        },
     },
-    template: '<LynInput v-bind="args">{{ args.slotContent }}</LynInput>',
-});
-
-export const Text = Template.bind({}) as Story;
-Text.args = {
-    background: "lyn-white",
-    disabled: false,
-    hasError: false,
-    placeholder: "Placeholder",
-    required: false,
-    size: "medium",
-    type: "text",
-    value: "Text",
-    // step: null,
-    // id: null,
-    // name: null,
-    // autocomplete: null,
-    // maxlength: null,
 };
 
-export const Number = Template.bind({}) as Story;
-Number.args = {
-    background: "lyn-white",
-    disabled: false,
-    hasError: false,
-    placeholder: "Placeholder",
-    required: false,
-    size: "medium",
-    step: 1,
-    type: "number",
-    value: 0,
-    // id: null,
-    // name: null,
-    // autocomplete: null,
-    // maxlength: null,
+export default meta;
+
+export const Text: Story = {
+    args: {
+        value: "Text",
+        background: Background["lyn-white"],
+        disabled: false,
+        hasError: false,
+        placeholder: "Placeholder",
+        required: false,
+        size: Size.medium,
+        type: Type.text,
+        // step: null,
+        // id: null,
+        // name: null,
+        // autocomplete: null,
+        // maxlength: null,
+    },
 };
 
-export const Email = Template.bind({}) as Story;
-Email.args = {
-    background: "lyn-white",
-    disabled: false,
-    hasError: false,
-    placeholder: "Placeholder",
-    required: false,
-    size: "medium",
-    step: 1,
-    type: "email",
-    value: "Email@email.com",
-    // id: null,
-    // name: null,
-    // autocomplete: null,
-    // maxlength: null,
+export const Number: Story = {
+    args: {
+        value: 0,
+        background: Background["lyn-white"],
+        disabled: false,
+        hasError: false,
+        placeholder: "Placeholder",
+        required: false,
+        size: Size.medium,
+        type: Type.number,
+        step: 1,
+        // id: null,
+        // name: null,
+        // autocomplete: null,
+        // maxlength: null,
+    },
+    parameters: {
+        docs: {
+            source: {
+                transform: (src: string) => {
+                    src = StorybookSourceUtils.convertValueToModelValue(src, "number");
+                    return src;
+                },
+            },
+        },
+    },
 };
 
-export const Password = Template.bind({}) as Story;
-Password.args = {
-    background: "lyn-white",
-    disabled: false,
-    hasError: false,
-    placeholder: "Placeholder",
-    required: false,
-    size: "medium",
-    type: "password",
-    value: "mypassword",
-    // step: null,
-    // id: null,
-    // name: null,
-    // autocomplete: null,
-    // maxlength: null,
+export const Email: Story = {
+    args: {
+        value: "Email@email.com",
+        autocomplete: "email",
+        background: Background["lyn-white"],
+        disabled: false,
+        hasError: false,
+        placeholder: "Placeholder",
+        required: false,
+        size: Size.medium,
+        type: Type.email,
+        // step: null,
+        // id: null,
+        // name: null,
+        // maxlength: null,
+    },
 };
 
-export const Small = Template.bind({}) as Story;
-Small.args = {
-    background: "lyn-white",
-    disabled: false,
-    hasError: false,
-    placeholder: "Placeholder",
-    required: false,
-    size: "small",
-    type: "text",
-    value: "small",
-    // step: null,
-    // id: null,
-    // name: null,
-    // autocomplete: null,
-    // maxlength: null,
+export const Password: Story = {
+    args: {
+        value: "password",
+        autocomplete: "current-password",
+        background: Background["lyn-white"],
+        disabled: false,
+        hasError: false,
+        placeholder: "Placeholder",
+        required: false,
+        size: Size.medium,
+        type: Type.password,
+        // step: null,
+        // id: null,
+        // name: null,
+        // maxlength: null,
+    },
+};
+
+export const Small: Story = {
+    args: {
+        background: Background["lyn-white"],
+        disabled: false,
+        hasError: false,
+        placeholder: "Placeholder",
+        required: false,
+        size: Size.small,
+        type: Type.text,
+        value: "Text",
+        // step: null,
+        // id: null,
+        // name: null,
+        // autocomplete: null,
+        // maxlength: null,
+    },
 };

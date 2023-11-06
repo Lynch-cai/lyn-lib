@@ -1,9 +1,4 @@
 <script lang="ts">
-/* 
-    Example usage:
-    <LynLoading color="lyn-blue" />
-*/
-
 import { defineComponent, PropType } from "vue";
 import { Color } from "./types";
 

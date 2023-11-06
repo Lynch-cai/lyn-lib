@@ -14,20 +14,12 @@
     &:hover
         cursor pointer
 
-    /* ====================
-        Props: isDisabled
-        Default: false
-    ==================== */
     &:disabled
         cursor not-allowed
 
-    /* ====================
-        Props: type
-        Default: primary
-    ==================== */ 
     &.primary
         color $lyn-white
-        background $primary-lyn-blue
+        background $lyn-primary-blue
         &:hover, &:focus
             background $lyn-blue400
             lyn-shadow-small-blue()
@@ -40,8 +32,8 @@
 
     &.secondary
         background $lyn-white
-        color $primary-lyn-blue
-        border 0.125rem solid $primary-lyn-blue
+        color $lyn-primary-blue
+        border 0.125rem solid $lyn-primary-blue
         &:hover, &:focus
             background $lyn-grey050
             lyn-shadow-small-blue()
@@ -60,7 +52,7 @@
         &:hover, &:focus
             outline none
             background $lyn-grey050
-            color $primary-lyn-blue
+            color $lyn-primary-blue
 
         &:active
             background $lyn-grey100
@@ -75,10 +67,6 @@
         &:hover
             color $lyn-alert200
 
-    /* ====================
-        Props: size
-        Default: medium
-    ==================== */
     &.medium
         padding 0.625rem 2rem
         min-height 2.5rem
@@ -88,11 +76,6 @@
         padding 0.4375rem 1.25rem
         @extend .lyn-body2-semibold-font
 
-
-    /* ====================
-        Props: isLoading
-        Default: false
-    ==================== */
     .button-text
         transition-ease()
         &.hide

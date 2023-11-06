@@ -1,10 +1,14 @@
-import { Story } from "../IStory";
+import { Meta, StoryObj } from "@storybook/vue3";
 import LynSelect from "./LynSelect.vue";
 import { Size } from "./types";
+import { StorybookSourceUtils } from "@/utils/storybook.utils";
 
-export default {
+type Story = StoryObj<typeof LynSelect>;
+
+const meta: Meta<typeof LynSelect> = {
     title: "LynSelect",
     component: LynSelect,
+    tags: ["autodocs"],
     argTypes: {
         disabled: { control: "boolean" },
         hasError: { control: "boolean" },
@@ -15,60 +19,68 @@ export default {
         size: { options: Size },
         value: {},
     },
-};
-
-const Template = (args: unknown) => ({
-    components: { LynSelect },
-    setup() {
-        return { args };
+    parameters: {
+        docs: {
+            source: {
+                transform: (src: string) => {
+                    src = StorybookSourceUtils.convertValueToModelValue(src, "string");
+                    src = StorybookSourceUtils.convertValueToNewValue(src, "options", 'options="yourOptionsVariable"');
+                    return src;
+                },
+            },
+        },
     },
-    template: '<LynSelect v-bind="args" />',
-});
-
-export const Default = Template.bind({}) as Story;
-Default.args = {
-    disabled: false,
-    hasError: false,
-    options: [
-        { value: "option_1", text: "Option 1" },
-        { value: "option_2", text: "Option 2" },
-        { value: "option_3", text: "Option 3" },
-    ],
-    placeholder: "Select an option",
-    required: false,
-    size: Size.medium,
-    value: null,
-    // id: null,
 };
 
-export const DisabledOption = Template.bind({}) as Story;
-DisabledOption.args = {
-    disabled: false,
-    hasError: false,
-    options: [
-        { value: "option_1", text: "Option 1" },
-        { value: "option_2", text: "Option 2", disabled: true },
-        { value: "option_3", text: "Option 3" },
-    ],
-    placeholder: "Select an option",
-    required: false,
-    size: "medium",
-    value: null,
-    // id: null,
+export default meta;
+
+export const Default: Story = {
+    args: {
+        value: undefined,
+        disabled: false,
+        hasError: false,
+        options: [
+            { value: "option_1", label: "Option 1" },
+            { value: "option_2", label: "Option 2" },
+            { value: "option_3", label: "Option 3" },
+        ],
+        placeholder: "Select an option",
+        required: false,
+        size: Size.medium,
+        // id: null,
+    },
 };
 
-export const Small = Template.bind({}) as Story;
-Small.args = {
-    disabled: false,
-    hasError: false,
-    options: [
-        { value: "option_1", text: "Option 1" },
-        { value: "option_2", text: "Option 2" },
-        { value: "option_3", text: "Option 3" },
-    ],
-    placeholder: "Select an option",
-    required: false,
-    size: "small",
-    value: null,
-    // id: null,
+export const DisabledOption: Story = {
+    args: {
+        value: undefined,
+        disabled: false,
+        hasError: false,
+        options: [
+            { value: "option_1", label: "Option 1" },
+            { value: "option_2", label: "Option 2", disabled: true },
+            { value: "option_3", label: "Option 3" },
+        ],
+        placeholder: "Select an option",
+        required: false,
+        size: Size.medium,
+        // id: null,
+    },
+};
+
+export const Small: Story = {
+    args: {
+        value: undefined,
+        disabled: false,
+        hasError: false,
+        options: [
+            { value: "option_1", label: "Option 1" },
+            { value: "option_2", label: "Option 2" },
+            { value: "option_3", label: "Option 3" },
+        ],
+        placeholder: "Select an option",
+        required: false,
+        size: Size["small"],
+        // id: null,
+    },
 };

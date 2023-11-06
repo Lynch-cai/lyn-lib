@@ -1,49 +1,61 @@
-import { Story } from "../IStory";
+import { Meta, StoryObj } from "@storybook/vue3";
 import LynButton from "./LynButton.vue";
+import { DefaultSlot } from "../../interfaces/DefaultSlot";
 import { Type, Size } from "./types";
+import { StorybookSourceUtils } from "@/utils/storybook.utils";
 
-export default {
+type Story = StoryObj<typeof LynButton> & DefaultSlot;
+
+const meta: Meta<typeof LynButton> = {
     title: "LynButton",
     component: LynButton,
+    tags: ["autodocs"],
     argTypes: {
         type: { options: Type },
         size: { options: Size },
         isLoading: { control: "boolean" },
         isDisabled: { control: "boolean" },
     },
-};
-
-const Template = (args: unknown) => ({
-    components: { LynButton },
-    setup() {
-        return { args };
+    parameters: {
+        docs: {
+            source: {
+                transform: (src: string) => {
+                    src = StorybookSourceUtils.removeDefaultSlotTemplate(src);
+                    return src;
+                },
+            },
+        },
     },
-    template: '<LynButton v-bind="args">{{ args.slotContent }}</LynButton>',
-});
-
-export const Primary = Template.bind({}) as Story;
-Primary.args = {
-    type: "primary",
-    size: "medium",
-    isLoading: false,
-    isDisabled: false,
-    slotContent: "Primary",
 };
 
-export const Secondary = Template.bind({}) as Story;
-Secondary.args = {
-    type: "secondary",
-    size: "medium",
-    isLoading: false,
-    isDisabled: false,
-    slotContent: "Secondary",
+export default meta;
+
+export const Primary: Story = {
+    args: {
+        type: Type.primary,
+        size: Size.medium,
+        isLoading: false,
+        isDisabled: false,
+        default: "Primary",
+    },
 };
 
-export const Tertiary = Template.bind({}) as Story;
-Tertiary.args = {
-    type: "tertiary",
-    size: "medium",
-    isLoading: false,
-    isDisabled: false,
-    slotContent: "Tertiary",
+export const Secondary: Story = {
+    args: {
+        type: Type.secondary,
+        size: Size.medium,
+        isLoading: false,
+        isDisabled: false,
+        default: "Secondary",
+    },
+};
+
+export const Tertiary: Story = {
+    args: {
+        type: Type.tertiary,
+        size: Size.medium,
+        isLoading: false,
+        isDisabled: false,
+        default: "Tertiary",
+    },
 };

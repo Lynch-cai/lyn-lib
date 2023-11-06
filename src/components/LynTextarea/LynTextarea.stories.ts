@@ -1,36 +1,44 @@
-import { Story } from "../IStory";
+import { Meta, StoryObj } from "@storybook/vue3";
 import LynTextarea from "./LynTextarea.vue";
+import { StorybookSourceUtils } from "@/utils/storybook.utils";
 
-export default {
+type Story = StoryObj<typeof LynTextarea>;
+
+const meta: Meta<typeof LynTextarea> = {
     title: "LynTextarea",
     component: LynTextarea,
+    tags: ["autodocs"],
     argTypes: {
         columns: {},
-        hasError: {},
+        hasError: { control: "boolean" },
         id: {},
         maxlength: {},
         placeholder: {},
         rows: {},
-        type: {},
         value: {},
+    },
+    parameters: {
+        docs: {
+            source: {
+                transform: (src: string) => {
+                    src = StorybookSourceUtils.convertValueToModelValue(src, "string");
+                    return src;
+                },
+            },
+        },
     },
 };
 
-const Template = (args: unknown) => ({
-    components: { LynTextarea },
-    setup() {
-        return { args };
-    },
-    template: '<LynTextarea v-bind="args" />',
-});
+export default meta;
 
-export const Default = Template.bind({}) as Story;
-Default.args = {
-    hasError: false,
-    placeholder: "Placeholder",
-    value: "Default",
-    // rows: null,
-    // id: null,
-    // columns: null,
-    // maxlength: null,
+export const Default: Story = {
+    args: {
+        value: "Default",
+        placeholder: "Placeholder",
+        // columns: 300,
+        // rows: 5,
+        // maxlength: 3000,
+        // hasError: false,
+        // id: null,
+    },
 };

@@ -1,9 +1,4 @@
 <script lang="ts">
-/*
-    Example usage:
-    <LynInput v-model:value="value" type="text" placeholder="Please insert your name" id="firstName" name="firstName" autocomplete="given-name" required="true"/>
-*/
-
 import { defineComponent, PropType } from "vue";
 import { Type, Background, Size } from "./types";
 
@@ -14,13 +9,22 @@ export default defineComponent({
             default: "lyn-white" as Background,
         },
         autocomplete: String,
-        disabled: Boolean,
-        hasError: Boolean,
+        disabled: {
+            type: Boolean,
+            default: false,
+        },
+        hasError: {
+            type: Boolean,
+            default: false,
+        },
         id: String,
         maxlength: Number,
         name: String,
         placeholder: String,
-        required: Boolean,
+        required: {
+            type: Boolean,
+            default: false,
+        },
         size: {
             type: String as PropType<Size>,
             default: "medium" as Size,
@@ -30,7 +34,7 @@ export default defineComponent({
             type: String as PropType<Type>,
             default: "text" as Type,
         },
-        value: String || Number,
+        value: [String, Number],
     },
     data: () => ({
         childValue: undefined as string | number | undefined,
@@ -58,7 +62,7 @@ export default defineComponent({
     <input
         ref="input"
         class="lyn-input"
-        :class="[background, size, { hasError: hasError }]"
+        :class="[background, size, { 'has-error': hasError }]"
         :type="type"
         v-model="childValue"
         :id="id"
