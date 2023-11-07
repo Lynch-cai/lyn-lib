@@ -39,3 +39,23 @@ export const Default: Story = {
         default: "Label",
     },
 };
+
+export const Required: Story = {
+    args: {
+        for: "exampleInput",
+        required: true,
+        size: Size.medium,
+        padding: true,
+        default: "Label",
+    },
+};
+
+export const Small: Story = {
+    args: {
+        for: "exampleInput",
+        required: false,
+        size: Size.small,
+        padding: true,
+        default: "Label",
+    },
+};
