@@ -1,6 +1,6 @@
 <script lang="ts">
 import { PropType, defineComponent } from "vue";
-import { Size, Option } from "./types";
+import { Size } from "./types";
 
 export default defineComponent({
     props: {
@@ -13,7 +13,6 @@ export default defineComponent({
             default: false,
         },
         id: String,
-        options: Array as PropType<Option[]>,
         placeholder: String,
         required: {
             type: Boolean,
@@ -52,7 +51,7 @@ export default defineComponent({
             <span class="icon-chevron-down-16px angle-down"></span>
             <select ref="select" :class="{ 'no-selection': !childValue }" v-model="childValue" :id="id" :required="required" :disabled="disabled">
                 <option :value="null" disabled selected>{{ placeholder }}</option>
-                <option v-for="(option, index) in options" :value="option.value" :disabled="option.disabled" :key="index">{{ option.label }}</option>
+                <slot></slot>
             </select>
         </div>
     </div>

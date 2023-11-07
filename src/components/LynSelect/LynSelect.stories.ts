@@ -1,9 +1,7 @@
-import { Meta, StoryObj } from "@storybook/vue3";
+import { Meta } from "@storybook/vue3";
 import LynSelect from "./LynSelect.vue";
 import { Size } from "./types";
-import { StorybookSourceUtils } from "@/utils/storybook.utils";
-
-type Story = StoryObj<typeof LynSelect>;
+import { Source } from "@storybook/blocks";
 
 const meta: Meta<typeof LynSelect> = {
     title: "LynSelect",
@@ -13,7 +11,6 @@ const meta: Meta<typeof LynSelect> = {
         disabled: { control: "boolean" },
         hasError: { control: "boolean" },
         id: {},
-        options: {},
         placeholder: {},
         required: { control: "boolean" },
         size: { options: Size },
@@ -21,66 +18,54 @@ const meta: Meta<typeof LynSelect> = {
     },
     parameters: {
         docs: {
-            source: {
-                transform: (src: string) => {
-                    src = StorybookSourceUtils.convertValueToModelValue(src, "string");
-                    src = StorybookSourceUtils.convertValueToNewValue(src, "options", 'options="yourOptionsVariable"');
-                    return src;
-                },
-            },
+            source: Source,
         },
     },
 };
 
 export default meta;
 
-export const Default: Story = {
-    args: {
-        value: undefined,
-        disabled: false,
-        hasError: false,
-        options: [
-            { value: "option_1", label: "Option 1" },
-            { value: "option_2", label: "Option 2" },
-            { value: "option_3", label: "Option 3" },
-        ],
-        placeholder: "Select an option",
-        required: false,
-        size: Size.medium,
-        // id: null,
+// Writed in Storybook 6.x.x way because vue slot with html element inside is not supported in 7.x.x yet
+const Template: any = (args: any) => ({
+    components: { LynSelect },
+    setup() {
+        return { args };
     },
+    template: `
+        <LynSelect
+            v-model:value="yourVariable"
+            :disabled="args.disabled"
+            :hasError="args.hasError"
+            :placeholder="args.placeholder"
+            :required="args.required"
+            :size="args.size"
+            :id="args.id"
+        >
+            <option value="option_1">Option 1</option>
+            <option value="option_2">Option 2</option>
+            <option value="option_3">Option 3</option>
+        </LynSelect>
+    `,
+});
+
+export const Default = Template.bind({});
+Default.args = {
+    value: undefined,
+    disabled: false,
+    hasError: false,
+    placeholder: "Select an option",
+    required: false,
+    size: Size.medium,
+    id: null,
 };
 
-export const DisabledOption: Story = {
-    args: {
-        value: undefined,
-        disabled: false,
-        hasError: false,
-        options: [
-            { value: "option_1", label: "Option 1" },
-            { value: "option_2", label: "Option 2", disabled: true },
-            { value: "option_3", label: "Option 3" },
-        ],
-        placeholder: "Select an option",
-        required: false,
-        size: Size.medium,
-        // id: null,
-    },
-};
-
-export const Small: Story = {
-    args: {
-        value: undefined,
-        disabled: false,
-        hasError: false,
-        options: [
-            { value: "option_1", label: "Option 1" },
-            { value: "option_2", label: "Option 2" },
-            { value: "option_3", label: "Option 3" },
-        ],
-        placeholder: "Select an option",
-        required: false,
-        size: Size["small"],
-        // id: null,
-    },
+export const Small = Template.bind({});
+Small.args = {
+    value: undefined,
+    disabled: false,
+    hasError: false,
+    placeholder: "Select an option",
+    required: false,
+    size: Size.small,
+    id: null,
 };
