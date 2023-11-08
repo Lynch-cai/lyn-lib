@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/vue3";
 import LynButton from "./LynButton.vue";
-import { DefaultSlot } from "../../interfaces/DefaultSlot";
+import { DefaultSlot } from "@/interfaces/DefaultSlot";
 import { Type, Size } from "./types";
 import { StorybookSourceUtils } from "@/utils/storybook.utils";
 

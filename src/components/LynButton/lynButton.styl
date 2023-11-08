@@ -10,7 +10,7 @@
     box-sizing border-box
     border 0.125rem solid transparent
     @extend .lyn-button-font
-    transition-ease()
+    lyn-transition-ease()
     &:hover
         cursor pointer
 
@@ -28,12 +28,14 @@
             background $lyn-blue600
 
         &:disabled
-            background $lyn-grey300 !important
+            background $lyn-grey200 
 
     &.secondary
         background $lyn-white
         color $lyn-primary-blue
         border 0.125rem solid $lyn-primary-blue
+        lyn-transition-fast-ease(color)
+        lyn-transition-slow-ease(border)
         &:hover, &:focus
             background $lyn-grey050
             lyn-shadow-small-blue()
@@ -42,11 +44,13 @@
             background $lyn-grey100
 
         &:disabled
-            background $lyn-grey100 !important
+            background $lyn-white
+            color $lyn-grey200
+            border 0.125rem solid $lyn-grey200
 
     &.tertiary
         box-sizing border-box
-        transition-ease()
+        lyn-transition-fast-ease()
         color $lyn-grey400
 
         &:hover, &:focus
@@ -61,11 +65,13 @@
             color $lyn-grey300
             background $lyn-white !important
 
-    &.error
-        color $lyn-alert300
-        padding 0
+        span::before
+            lyn-transition-slow-ease()
+            color $lyn-grey400 !important
+
         &:hover
-            color $lyn-alert200
+            span::before
+                color $lyn-primary-blue !important
 
     &.medium
         padding 0.625rem 2rem
@@ -77,7 +83,10 @@
         @extend .lyn-body2-semibold-font
 
     .button-text
-        transition-ease()
+        lyn-transition-ease()
+        display flex
+        align-items center
+        gap 0.5rem
         &.hide
             visibility hidden
             opacity 0

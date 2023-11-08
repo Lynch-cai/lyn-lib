@@ -46,7 +46,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="lyn-select-container" :class="[size, { hasError: hasError }]">
+    <div class="lyn-select-container" :class="[size, { 'has-error': hasError }]">
         <div class="select">
             <span class="icon-chevron-down-16px angle-down"></span>
             <select ref="select" :class="{ 'no-selection': !childValue }" v-model="childValue" :id="id" :required="required" :disabled="disabled">

@@ -37,9 +37,9 @@ export default defineComponent({
 
 <template>
     <button ref="button" class="lyn-button" :class="[type, size]" :disabled="isLoading || isDisabled">
-        <span class="button-text" :class="{ hide: isLoading }">
+        <div class="button-text" :class="{ hide: isLoading }">
             <slot></slot>
-        </span>
+        </div>
         <LynLoading
             v-if="isLoading"
             :color="type === 'primary' ? LynLoadingColor['lyn-white'] : type === 'secondary' || type === 'tertiary' ? LynLoadingColor['lyn-blue'] : LynLoadingColor['lyn-black']"
