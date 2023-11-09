@@ -1,9 +1,9 @@
 <script lang="ts">
 import { PropType, defineComponent } from "vue";
 import LynLoading from "@/components/LynLoading/LynLoading.vue";
-import LynInput from "../LynInput/LynInput.vue";
+import LynInput from "@/components/LynInput/LynInput.vue";
 import { Color as LynLoadingColor } from "@/components/LynLoading/types";
-import { Size as LynInputSize, Background as LynInputBackground, Type as LynInputType } from "../LynInput/types";
+import { Size as LynInputSize, Background as LynInputBackground, Type as LynInputType } from "@/components/LynInput/types";
 import { Item, SearchDropdownItem } from "./types";
 
 export default defineComponent({
@@ -201,6 +201,6 @@ export default defineComponent({
 </template>
 
 <style lang="stylus" scoped>
-@import "../lynInput/lynInput.styl"
+@import "../LynInput/lynInput.styl"
 @import "./lynSearch.styl"
 </style>

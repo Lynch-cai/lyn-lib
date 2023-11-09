@@ -2,7 +2,7 @@
 import { defineComponent, PropType } from "vue";
 import LynLoading from "@/components/LynLoading/LynLoading.vue";
 import { Type, Size } from "./types";
-import { Color as LynLoadingColor } from "../LynLoading/types";
+import { Color as LynLoadingColor } from "@/components/LynLoading/types";
 
 export default defineComponent({
     components: { LynLoading },
