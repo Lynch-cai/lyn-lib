@@ -1,4 +1,5 @@
 export { default as LynButton } from "./LynButton/LynButton.vue";
+export { default as LynButtonDropdown } from "./LynButtonDropdown/LynButtonDropdown.vue";
 export { default as LynCheckbox } from "./LynCheckbox/LynCheckbox.vue";
 export { default as LynInput } from "./LynInput/LynInput.vue";
 export { default as LynLabel } from "./LynLabel/LynLabel.vue";
@@ -8,3 +9,5 @@ export { default as LynRadio } from "./LynRadio/LynRadio.vue";
 export { default as LynSelect } from "./LynSelect/LynSelect.vue";
 export { default as LynSwitch } from "./LynSwitch/LynSwitch.vue";
 export { default as LynTextarea } from "./LynTextarea/LynTextarea.vue";
+export { default as LynSearch } from "./LynSearch/LynSearch.vue";
+export { default as LynSearchPappers } from "./LynSearchPappers/LynSearchPappers.vue";

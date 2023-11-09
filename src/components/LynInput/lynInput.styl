@@ -1,3 +1,17 @@
+.lyn-input-container
+    position relative
+    display flex
+    align-items center
+    .lyn-input-icon-left
+        opacity 0
+        position absolute
+        left 1rem
+    &.has-icon-left
+        .lyn-input
+            padding-left 2.5rem
+        .lyn-input-icon-left
+            opacity 1
+
 .lyn-input
     color $lyn-grey400
     display flex

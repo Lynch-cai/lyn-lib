@@ -59,21 +59,27 @@ export default defineComponent({
 </script>
 
 <template>
-    <input
-        ref="input"
-        class="lyn-input"
-        :class="[background, size, { 'has-error': hasError }]"
-        :type="type"
-        v-model="childValue"
-        :id="id"
-        :name="name"
-        :placeholder="placeholder"
-        :required="required"
-        :disabled="disabled"
-        :autocomplete="autocomplete"
-        :step="step"
-        :maxlength="maxlength"
-    />
+    <div class="lyn-input-container" :class="{ 'has-icon-left': $slots['icon-left'] }">
+        <div class="lyn-input-icon-left">
+            <slot name="icon-left"></slot>
+        </div>
+        <input
+            ref="input"
+            class="lyn-input"
+            :class="[background, size, { 'has-error': hasError }]"
+            :type="type"
+            v-model="childValue"
+            :id="id"
+            :name="name"
+            :placeholder="placeholder"
+            :required="required"
+            :disabled="disabled"
+            :autocomplete="autocomplete"
+            :step="step"
+            :maxlength="maxlength"
+            @focus="$emit('focus')"
+        />
+    </div>
 </template>
 
 <style lang="stylus" scoped>

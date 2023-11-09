@@ -1,0 +1,112 @@
+.lyn-search-container
+    position relative
+    .search
+        position relative
+        min-width 16.75rem
+
+        .input
+            @extend .lyn-input
+            &.hasIcon
+                padding-left 2.5rem
+
+        .icon-search-16px
+            position absolute
+            left 1rem
+            top 50%
+            transform translateY(-50%)
+            &:before
+                color $lyn-grey300
+
+        &.grey
+            .input
+                background $lyn-grey100
+                border 0.125rem solid transparent
+                &:hover
+                    background $lyn-grey200
+                    box-shadow none !important
+                &:focus
+                    background $lyn-grey050
+                    border 0.125rem solid $lyn-primary-blue
+                    box-shadow none !important
+
+    &.small
+        .search
+            .input
+                height 2.125rem
+                padding-top 0.5rem
+                padding-right 0.5rem
+                padding-bottom 0.5rem
+                @extend .lyn-body2-font
+
+    .search-dropdown
+        z-index 15
+        display flex
+        flex-direction column
+        gap 0.25rem
+        position absolute
+        top 2.875rem
+        left 0
+        right 0
+        background $lyn-white
+        box-sizing border-box
+        width 100%
+        border 0.125rem solid $lyn-grey100
+        border-radius 0.5rem
+        lyn-shadow-small()
+        visibility hidden
+        opacity 0
+        lyn-transition-fast-ease()
+        padding 0.25rem
+
+        &.active
+            visibility visible
+            opacity 1
+            min-height 2.625rem
+
+        .search-dropdown-loading-container
+            display flex
+            justify-content center
+            align-items center
+            height 2.125rem
+            box-sizing border-box
+
+        .search-dropdown-item
+            text-align left
+            padding 0.5rem
+            border-radius 0.25rem
+            cursor pointer
+            lyn-transition-ease()
+            @extend .lyn-body2-font
+            display flex
+            align-items center
+            justify-content space-between
+            gap 0.5rem
+
+            &:hover
+                background $lyn-grey050
+
+            &:active
+                background $lyn-grey100
+
+            .search-dropdown-item-text
+                display block
+                word-break break-word
+                max-width 65%
+            
+            .search-dropdown-item-tag
+                background $lyn-grey100
+                padding 0.0625rem 0.75rem
+                border-radius 0.25rem
+                color $lyn-grey400
+                @extend .lyn-callout-font
+                width fit-content
+                max-width 35%
+
+        .search-dropdown-not-found
+            padding 0.5rem
+            @extend .lyn-body2-font
+
+        .search-dropdown-loading
+            display flex
+            justify-content center
+            align-items center

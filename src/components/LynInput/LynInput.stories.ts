@@ -13,6 +13,7 @@ const meta: Meta<typeof LynInput> = {
         autocomplete: {},
         background: { options: Background },
         disabled: {},
+        hasError: {},
         id: {},
         maxlength: {},
         name: {},
@@ -135,4 +136,47 @@ export const Small: Story = {
         // autocomplete: null,
         // maxlength: null,
     },
+};
+
+const TemplateIconLeft: any = (args: any) => ({
+    components: { LynInput },
+    setup() {
+        return { args };
+    },
+    template: `
+        <LynInput
+            :autocomplete="args.autocomplete"
+            :background="args.background"
+            :disabled="args.disabled"
+            :hasError="args.hasError"
+            :id="args.id"
+            :maxlength="args.maxlength"
+            :name="args.name"
+            :placeholder="args.placeholder"
+            :required="args.required"
+            :size="args.size"
+            :step="args.step"
+            :type="args.type"
+            :value="args.value"
+        >
+            <template #icon-left><span class="icon-search-16px color-lyn-grey300"></span></template>
+        </LynInput>
+    `,
+});
+
+export const LeftIcon = TemplateIconLeft.bind({});
+LeftIcon.args = {
+    value: "",
+    background: Background["lyn-white"],
+    disabled: false,
+    hasError: false,
+    placeholder: "Placeholder",
+    required: false,
+    size: Size.medium,
+    type: Type.text,
+    // step: null,
+    // id: null,
+    // name: null,
+    // autocomplete: null,
+    // maxlength: null,
 };

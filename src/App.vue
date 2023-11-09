@@ -14,13 +14,16 @@ import LynCheckbox from "@/components/LynCheckbox/LynCheckbox.vue";
 import LynLoading from "@/components/LynLoading/LynLoading.vue";
 import LynRadio from "@/components/LynRadio/LynRadio.vue";
 import LynLink from "@/components/LynLink/LynLink.vue";
-import LynSelect from "./components/LynSelect/LynSelect.vue";
-import LynTextarea from "./components/LynTextarea/LynTextarea.vue";
-import LynLabel from "./components/LynLabel/LynLabel.vue";
-import LynSwitch from "./components/LynSwitch/LynSwitch.vue";
+import LynSelect from "@/components/LynSelect/LynSelect.vue";
+import LynTextarea from "@/components/LynTextarea/LynTextarea.vue";
+import LynLabel from "@/components/LynLabel/LynLabel.vue";
+import LynSwitch from "@/components/LynSwitch/LynSwitch.vue";
+import LynSearch from "@/components/LynSearch/LynSearch.vue";
+import LynSearchPappers from "./components/LynSearchPappers/LynSearchPappers.vue";
+import { Item } from "./components/LynSearch/types";
 
 export default {
-    components: { RouterView, LynButton, LynButtonDropdown, LynInput, LynCheckbox, LynLoading, LynRadio, LynLink, LynSelect, LynTextarea, LynLabel, LynSwitch },
+    components: { RouterView, LynButton, LynButtonDropdown, LynInput, LynCheckbox, LynLoading, LynRadio, LynLink, LynSelect, LynTextarea, LynLabel, LynSwitch, LynSearch, LynSearchPappers },
     data() {
         return {
             // Types
@@ -54,15 +57,10 @@ export default {
             inputValue2: "",
             inputValue3: "",
 
-            radioValue: "",
+            radioValue: "radio1",
 
             selectValue: "",
             selectValue2: "test1",
-            selectOptions: [
-                { value: "test1", label: "test1" },
-                { value: "test2", label: "test2" },
-                { value: "test3", label: "test3" },
-            ],
 
             checkboxValue: false,
             checkboxValue2: false,
@@ -70,11 +68,45 @@ export default {
             textareaValue: "",
 
             switchValue: false,
+
+            searchItems: [
+                {
+                    data: {
+                        name: "test",
+                        lastName: "test",
+                    },
+                    label: "test",
+                },
+                {
+                    data: {
+                        name: "test2",
+                        lastName: "test",
+                    },
+                    label: "test2",
+                },
+            ],
+            searchSelectValue: {},
+            searchValue: [],
+            searchPappersItems: [] as Item[],
         };
     },
     methods: {
-        log(number: number) {
-            console.log(`log: ${number}`);
+        log(thing: any) {
+            if (typeof thing === "object") {
+                console.log(thing);
+                return;
+            }
+            console.log(`log: ${thing}`);
+        },
+    },
+    watch: {
+        searchPappersItems() {
+            if (this.searchPappersItems[0]) {
+                this.searchPappersItems[0].tag = "Nouveau Client";
+            }
+            if (this.searchPappersItems[1]) {
+                this.searchPappersItems[1].tag = "CRM";
+            }
         },
     },
 };
@@ -157,6 +189,9 @@ export default {
             <LynInput :type="LynInputType.text" placeholder="test" v-model:value="inputValue2" />
             {{ inputValue3 }}
             <LynInput :type="LynInputType.text" placeholder="test" v-model:value="inputValue3" :has-error="true" />
+            <LynInput :type="LynInputType.text" v-model:value="inputValue">
+                <template #icon-left><span class="icon-search-16px color-lyn-grey300"></span></template>
+            </LynInput>
         </div>
 
         <div class="lyn-comp-box">
@@ -184,9 +219,17 @@ export default {
         <div class="lyn-comp-box">
             <h2 class="lyn-h2-font">Select</h2>
             {{ selectValue }}
-            <LynSelect :options="selectOptions" placeholder="Select an option" v-model:value="selectValue" />
+            <LynSelect placeholder="Select an option" v-model:value="selectValue">
+                <option value="option_1">Option 1</option>
+                <option value="option_2">Option 2</option>
+                <option value="option_3">Option 3</option>
+            </LynSelect>
             {{ selectValue2 }}
-            <LynSelect :options="selectOptions" placeholder="Select an option" v-model:value="selectValue2" :has-error="true" />
+            <LynSelect placeholder="Select an option" v-model:value="selectValue2" :has-error="true">
+                <option value="option_1">Option 1</option>
+                <option value="option_2">Option 2</option>
+                <option value="option_3">Option 3</option>
+            </LynSelect>
         </div>
 
         <div class="lyn-comp-box">
@@ -210,6 +253,19 @@ export default {
             <h2 class="lyn-h2-font">Switch</h2>
             <LynSwitch v-model:value="switchValue" />
         </div>
+        <div class="lyn-comp-box">
+            <h2 class="lyn-h2-font">Search</h2>
+            <LynSearch :items="searchItems" @select="log($event)" />
+            <LynSearch :items="searchItems" :is-loading="true" @select="log($event)" />
+            <LynSearch :items="[]" :is-loading="true" @select="log($event)" />
+            <LynSearch :items="[]" @select="log($event)" />
+
+            <h2 class="lyn-h2-font">Search Pappers</h2>
+            <LynSearchPappers v-model:select="searchSelectValue" v-model:search="searchValue" v-model:items="searchPappersItems" :max-result="5" />
+            {{ searchSelectValue }}
+            <hr />
+            {{ searchValue }}
+        </div>
     </div>
 </template>
 
@@ -220,5 +276,5 @@ export default {
     flex-direction: column;
     gap: 0.5rem;
     padding: 1rem;
-    border: 1px solid #999999;
+    border: 1px solid #999999
 </style>

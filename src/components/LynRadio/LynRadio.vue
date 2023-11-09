@@ -35,10 +35,6 @@ export default defineComponent({
             this.checked = true;
             this.updateValue();
         },
-        uncheck() {
-            this.checked = false;
-            this.updateValue();
-        },
         focus() {
             (this.$refs.radio as HTMLInputElement).focus();
         },
@@ -47,7 +43,6 @@ export default defineComponent({
         },
         compareValue() {
             if (this.value === this.radioValue) this.check();
-            else this.uncheck();
         },
     },
     watch: {
