@@ -1,10 +1,17 @@
 <script lang="ts">
 import { defineComponent } from "vue";
+import LynError from "@/components/LynError/LynError.vue";
 
 export default defineComponent({
+    components: { LynError },
     props: {
         value: Boolean,
         id: String,
+        hasError: {
+            type: Boolean,
+            default: false,
+        },
+        errorMsg: String,
     },
     data: () => ({
         childValue: false,
@@ -27,11 +34,15 @@ export default defineComponent({
 </script>
 
 <template>
-    <button @click.prevent="toggle" class="lyn-switch-container" :class="{ active: childValue }" :id="id">
-        <div class="switch"></div>
-    </button>
+    <div class="lyn-switch-container">
+        <button @click.prevent="toggle" class="lyn-switch" :class="{ active: childValue, 'has-error': hasError }" :id="id">
+            <div class="switch"></div>
+        </button>
+        <LynError :hasError="hasError" :errorMsg="errorMsg" />
+    </div>
 </template>
 
 <style lang="stylus" scoped>
+@import "../LynError/lynError.styl"
 @import "./lynSwitch.styl"
 </style>

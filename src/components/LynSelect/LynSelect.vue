@@ -59,7 +59,7 @@ export default defineComponent({
                 </select>
             </div>
         </div>
-        <LynError :hasError="hasError" :errorMsg="errorMsg" />
+        <LynError :hasError="hasError" :errorMsg="errorMsg" :size="size" />
     </div>
 </template>
 

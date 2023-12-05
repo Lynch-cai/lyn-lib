@@ -152,6 +152,25 @@ export const Error: Story = {
         errorMsg: "Error message",
         placeholder: "Placeholder",
         required: false,
+        size: Size.medium,
+        type: Type.text,
+        value: "Text",
+        // step: null,
+        // id: null,
+        // name: null,
+        // autocomplete: null,
+        // maxlength: null,
+    },
+};
+
+export const ErrorSmall: Story = {
+    args: {
+        background: Background["lyn-white"],
+        disabled: false,
+        hasError: true,
+        errorMsg: "Error message",
+        placeholder: "Placeholder",
+        required: false,
         size: Size.small,
         type: Type.text,
         value: "Text",

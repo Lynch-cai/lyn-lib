@@ -82,7 +82,7 @@ export default defineComponent({
             :maxlength="maxlength"
             @focus="$emit('focus')"
         />
-        <LynError :hasError="hasError" :errorMsg="errorMsg" />
+        <LynError :hasError="hasError" :errorMsg="errorMsg" :size="size" />
     </div>
 </template>
 

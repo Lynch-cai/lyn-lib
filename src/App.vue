@@ -114,6 +114,7 @@ export default {
         },
     },
     async mounted() {
+        this.blockDropdown = true;
         await nextTick();
         this.q = "11";
         await nextTick();

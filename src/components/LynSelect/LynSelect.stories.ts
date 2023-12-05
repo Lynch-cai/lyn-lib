@@ -85,3 +85,15 @@ Error.args = {
     size: Size.medium,
     id: null,
 };
+
+export const ErrorSmall = Template.bind({});
+ErrorSmall.args = {
+    value: undefined,
+    disabled: false,
+    hasError: true,
+    errorMsg: "Error message",
+    placeholder: "Select an option",
+    required: false,
+    size: Size.small,
+    id: null,
+};

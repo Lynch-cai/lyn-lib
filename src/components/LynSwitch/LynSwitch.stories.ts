@@ -10,7 +10,9 @@ const meta: Meta<typeof LynSwitch> = {
     tags: ["autodocs"],
     argTypes: {
         value: { control: "boolean" },
-        id: String,
+        id: {},
+        hasError: { control: "boolean" },
+        errorMsg: {},
     },
     parameters: {
         docs: {
@@ -29,6 +31,8 @@ export default meta;
 export const Default: Story = {
     args: {
         value: false,
+        hasError: false,
+        errorMsg: "Error message",
         // id: null,
     },
 };
@@ -36,6 +40,17 @@ export const Default: Story = {
 export const Checked: Story = {
     args: {
         value: true,
+        hasError: false,
+        errorMsg: "Error message",
+        // id: null,
+    },
+};
+
+export const Error: Story = {
+    args: {
+        value: false,
+        hasError: true,
+        errorMsg: "Error message",
         // id: null,
     },
 };

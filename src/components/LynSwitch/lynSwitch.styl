@@ -1,39 +1,48 @@
 .lyn-switch-container
-    position relative
-    width 3.25rem
-    height 1.625rem
-    border-radius 100rem
-    background $lyn-grey200
-    cursor pointer
-    lyn-transition-ease()
-    &:hover, &:focus
-        background $lyn-grey300
-        shadow-extra-small()
+    display flex
+    flex-direction column
+    gap 0.25rem
 
-    &:active
-        .switch
-            width 1.375rem
-            transform translateX(0)
-
-    &.active
-        background $lyn-primary-blue
+    .lyn-switch
+        position relative
+        width 3.25rem
+        height 1.625rem
+        border-radius 100rem
+        outline 0.125rem solid transparent
+        background $lyn-grey200
+        cursor pointer
+        lyn-transition-ease()
         &:hover, &:focus
-            background $lyn-blue400
-            shadow-small-blue()
+            background $lyn-grey300
+            shadow-extra-small()
 
         &:active
             .switch
                 width 1.375rem
-                transform translateX(100%)
-        .switch
-            transform translateX(calc(100% + 0.5rem))
+                transform translateX(0)
 
-    .switch
-        position absolute
-        left 0.25rem
-        top 0.25rem
-        width 1.125rem
-        height 1.125rem
-        border-radius 100rem
-        background $lyn-white
-        lyn-transition-ease()
+        &.active
+            background $lyn-primary-blue
+            &:hover, &:focus
+                background $lyn-blue400
+                shadow-small-blue()
+
+            &:active
+                .switch
+                    width 1.375rem
+                    transform translateX(100%)
+            .switch
+                transform translateX(calc(100% + 0.5rem))
+
+        &.has-error
+            outline 0.125rem solid $lyn-alert300
+
+        .switch
+            position absolute
+            left 0.25rem
+            top 0.25rem
+            width 1.125rem
+            height 1.125rem
+            border-radius 100rem
+            background $lyn-white
+            lyn-transition-ease()
