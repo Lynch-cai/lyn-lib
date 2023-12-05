@@ -1,8 +1,10 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import { Type, Background, Size } from "./types";
+import LynError from "@/components/LynError/LynError.vue";
 
 export default defineComponent({
+    components: { LynError },
     props: {
         background: {
             type: String as PropType<Background>,
@@ -17,6 +19,7 @@ export default defineComponent({
             type: Boolean,
             default: false,
         },
+        errorMsg: String,
         id: String,
         maxlength: Number,
         name: String,
@@ -79,9 +82,11 @@ export default defineComponent({
             :maxlength="maxlength"
             @focus="$emit('focus')"
         />
+        <LynError :hasError="hasError" :errorMsg="errorMsg" />
     </div>
 </template>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
+@import "../LynError/lynError.styl"
 @import "./lynInput.styl"
 </style>

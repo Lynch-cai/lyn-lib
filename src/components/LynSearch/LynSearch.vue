@@ -2,6 +2,7 @@
 import { PropType, defineComponent } from "vue";
 import LynLoading from "@/components/LynLoading/LynLoading.vue";
 import LynInput from "@/components/LynInput/LynInput.vue";
+
 import { Color as LynLoadingColor } from "@/components/LynLoading/types";
 import { Size as LynInputSize, Background as LynInputBackground, Type as LynInputType } from "@/components/LynInput/types";
 import { Item, SearchDropdownItem } from "./types";
@@ -24,14 +25,15 @@ export default defineComponent({
             type: String,
             default: "",
         },
-        disabled: {
+        blockDropdown: {
             type: Boolean,
             default: false,
         },
-        isDropdownDisabled: {
+        hasError: {
             type: Boolean,
             default: false,
         },
+        errorMsg: String,
         size: {
             type: String as PropType<LynInputSize>,
             default: "medium",
@@ -124,34 +126,35 @@ export default defineComponent({
 
     watch: {
         childQ() {
-            this.highlightDropdownItem();
-            if (this.childQ) this.showDropdown = true;
-            else {
-                this.showDropdown = false;
-                return;
-            }
-
-            // Regarde si la valeur de recherche est la même que une des valeurs dans data de la dernière valeur sélectionnée, ça permet d'éviter de refetch
-            if (this.lastSelectedItem && this.lastSelectedItem.data) {
-                const data = this.lastSelectedItem.data;
-                const dataValues = Object.values(data);
-                const found = dataValues.find((value) => {
-                    if (typeof value === "string") return value.toLowerCase() === this.childQ.toLowerCase();
-                    return false;
-                });
-                if (found) {
+            if (!this.blockDropdown) {
+                this.highlightDropdownItem();
+                if (this.childQ) this.showDropdown = true;
+                else {
                     this.showDropdown = false;
                     return;
                 }
-            }
+                // Regarde si la valeur de recherche est la même que une des valeurs dans data de la dernière valeur sélectionnée, ça permet d'éviter de refetch
+                if (this.lastSelectedItem && this.lastSelectedItem.data) {
+                    const data = this.lastSelectedItem.data;
+                    const dataValues = Object.values(data);
+                    const found = dataValues.find((value) => {
+                        if (typeof value === "string") return value.toLowerCase() === this.childQ.toLowerCase();
+                        return false;
+                    });
+                    if (found) {
+                        this.showDropdown = false;
+                        return;
+                    }
+                }
 
-            this.isTyping = true;
-            this.lastSelectedItem = { data: {}, label: "" };
-            clearTimeout(this.timeout);
-            this.timeout = setTimeout(() => {
-                this.$emit("search", this.childQ);
-                this.isTyping = false;
-            }, 250); // Temps avant validation de l'input
+                this.isTyping = true;
+                this.lastSelectedItem = { data: {}, label: "" };
+                clearTimeout(this.timeout);
+                this.timeout = setTimeout(() => {
+                    this.$emit("search", this.childQ);
+                    this.isTyping = false;
+                }, 250); // Temps avant validation de l'input
+            }
         },
         q() {
             if (this.q !== this.childQ) {
@@ -162,13 +165,27 @@ export default defineComponent({
             this.copyItemsLocally();
             this.highlightDropdownItem();
         },
+        showDropdown() {
+            if (this.blockDropdown) this.showDropdown = false;
+        },
     },
 });
 </script>
 
 <template>
     <div ref="searchDropdownContainer" class="lyn-search-container" :class="size">
-        <LynInput :type="LynInputType.text" v-model:value="childQ" :name="name" :id="id" :placeholder="placeholder" ref="input" :background="background" @focus="onFocus()">
+        <LynInput
+            :hasError="hasError"
+            :errorMsg="errorMsg"
+            :type="LynInputType.text"
+            v-model:value="childQ"
+            :name="name"
+            :id="id"
+            :placeholder="placeholder"
+            ref="input"
+            :background="background"
+            @focus="onFocus()"
+        >
             <template #icon-left>
                 <span class="icon-search-16px color-lyn-grey300"></span>
             </template>
@@ -200,7 +217,8 @@ export default defineComponent({
     </div>
 </template>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
+@import "../LynError/lynError.styl"
 @import "../LynInput/lynInput.styl"
 @import "./lynSearch.styl"
 </style>

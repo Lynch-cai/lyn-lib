@@ -8,6 +8,11 @@ export default defineComponent({
     components: { LynSearch },
     emit: ["update:search", "update:select", "update:items"],
     props: {
+        hasError: {
+            type: Boolean,
+            default: false,
+        },
+        errorMsg: String,
         items: {
             type: Array as PropType<Item[]>,
             default: () => [] as Item[],
@@ -60,5 +65,5 @@ export default defineComponent({
 </script>
 
 <template>
-    <LynSearch @search="handleSearch($event)" @select="handleSelect($event)" :items="childItems" :is-loading="isFetching" :q="q" :max-result="maxResult" />
+    <LynSearch :hasError="hasError" :errorMsg="errorMsg" @search="handleSearch($event)" @select="handleSelect($event)" :items="childItems" :is-loading="isFetching" :q="q" :max-result="maxResult" />
 </template>

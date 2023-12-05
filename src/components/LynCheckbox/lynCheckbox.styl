@@ -1,91 +1,96 @@
 
 .lyn-checkbox-container
     display flex
-    align-items center
-    width fit-content
+    flex-direction column
     gap 0.25rem
-    @extend .lyn-body2-font
 
-    .checkbox-text
-        transform: translateY(0.0625rem)
-        color $lyn-grey400
-
-    .checkbox
+    .lyn-checkbox
         display flex
-        justify-content center
         align-items center
-        max-width 1.25rem
-        max-height 1.25rem
-        span
-            position absolute
-            pointer-events none
-            lyn-transition-ease()
-            z-index 1
-            transform scale(0)
-            display flex
-            justify-content center
-            align-items center
-            &:before
-                color $lyn-white
-        
-        label
-            position relative
-            box-sizing border-box
-            display flex
-            justify-content center
-            align-items center
-            width 1.25rem
-            height 1.25rem
-            pointer-events none
-            &:before
-                content ''
-                position absolute
-                border $lyn-grey200 0.125rem solid
-                border-radius 0.25rem
-                left 0
-                right 0
-                top 0
-                bottom 0
-                lyn-transition-ease()
-            
-            &:after
-                content ''
-                position absolute
-                border-radius 0.25rem
-                left 0
-                right 0
-                top 0
-                bottom 0
-                background $lyn-primary-blue
-                transform scale(0)
-                lyn-transition-ease()
+        width fit-content
+        gap 0.25rem
+        @extend .lyn-body2-font
 
-        input
-            position absolute
+        .checkbox-text
+            transform: translateY(0.0625rem)
+            color $lyn-grey400
+
+        .checkbox
+            display flex
+            justify-content center
+            align-items center
             max-width 1.25rem
             max-height 1.25rem
-            opacity 0
-            &:checked + label
+            span
+                position absolute
+                pointer-events none
+                lyn-transition-ease()
+                z-index 1
+                transform scale(0)
+                display flex
+                justify-content center
+                align-items center
                 &:before
-                    border $lyn-primary-blue 0.125rem solid
-                &:after
-                    transform scale(1)
-
-                span
-                    transform scale(1)
+                    color $lyn-white
             
-            &:hover + label
+            label
+                position relative
+                box-sizing border-box
+                display flex
+                justify-content center
+                align-items center
+                width 1.25rem
+                height 1.25rem
+                pointer-events none
                 &:before
-                    border $lyn-primary-blue 0.125rem solid
-                    lyn-shadow-extra-small()
+                    content ''
+                    position absolute
+                    border $lyn-grey200 0.125rem solid
+                    border-radius 0.25rem
+                    left 0
+                    right 0
+                    top 0
+                    bottom 0
+                    lyn-transition-ease()
+                
+                &:after
+                    content ''
+                    position absolute
+                    border-radius 0.25rem
+                    left 0
+                    right 0
+                    top 0
+                    bottom 0
+                    background $lyn-primary-blue
+                    transform scale(0)
+                    lyn-transition-ease()
 
-            &:focus + label
-                &:before
-                    border $lyn-primary-blue 0.125rem solid
-                    lyn-shadow-small-blue()
+            input
+                position absolute
+                max-width 1.25rem
+                max-height 1.25rem
+                opacity 0
+                &:checked + label
+                    &:before
+                        border $lyn-primary-blue 0.125rem solid
+                    &:after
+                        transform scale(1)
 
-    &.has-error
-        .checkbox
-            input + label
-                &:before
-                    border 0.125rem solid $lyn-alert300
+                    span
+                        transform scale(1)
+                
+                &:hover + label
+                    &:before
+                        border $lyn-primary-blue 0.125rem solid
+                        lyn-shadow-extra-small()
+
+                &:focus + label
+                    &:before
+                        border $lyn-primary-blue 0.125rem solid
+                        lyn-shadow-small-blue()
+
+        &.has-error
+            .checkbox
+                input + label
+                    &:before
+                        border 0.125rem solid $lyn-alert300

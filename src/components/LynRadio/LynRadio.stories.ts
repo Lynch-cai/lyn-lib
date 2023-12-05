@@ -10,6 +10,7 @@ const meta: Meta<typeof LynRadio> = {
     tags: ["autodocs"],
     argTypes: {
         hasError: { control: "boolean" },
+        errorMsg: {},
         label: {},
         name: {},
         id: {},
@@ -35,6 +36,7 @@ export default meta;
 export const Default: Story = {
     args: {
         hasError: false,
+        errorMsg: "Error message",
         label: "Default",
         radioValue: "customValue1",
         value: "YourVar",
@@ -48,6 +50,7 @@ export const Default: Story = {
 export const Checked: Story = {
     args: {
         hasError: false,
+        errorMsg: "Error message",
         label: "Checked",
         radioValue: "customValue2",
         value: "checked",
@@ -67,5 +70,19 @@ export const Checked: Story = {
                 },
             },
         },
+    },
+};
+
+export const Error: Story = {
+    args: {
+        hasError: true,
+        errorMsg: "Error message",
+        label: "Error",
+        radioValue: "customValue3",
+        value: "YourVar",
+        required: false,
+        disabled: false,
+        name: "radios",
+        id: "radio3",
     },
 };

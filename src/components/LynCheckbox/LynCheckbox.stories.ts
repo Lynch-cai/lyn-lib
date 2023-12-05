@@ -14,6 +14,7 @@ const meta: Meta<typeof LynCheckbox> = {
         id: {},
         required: { control: "boolean" },
         hasError: { control: "boolean" },
+        errorMsg: {},
     },
     parameters: {
         docs: {
@@ -36,6 +37,7 @@ export const Default: Story = {
         id: "default",
         required: false,
         hasError: false,
+        errorMsg: "Error message",
     },
 };
 
@@ -46,5 +48,17 @@ export const Checked: Story = {
         id: "default",
         required: false,
         hasError: false,
+        errorMsg: "Error message",
+    },
+};
+
+export const Error: Story = {
+    args: {
+        value: false,
+        label: "Error",
+        id: "error",
+        required: false,
+        hasError: true,
+        errorMsg: "Error message",
     },
 };

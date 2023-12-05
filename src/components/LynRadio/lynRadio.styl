@@ -1,81 +1,86 @@
 .lyn-radio-container
     display flex
-    align-items center
-    width fit-content
+    flex-direction column
     gap 0.25rem
-    .radio-text
-        color $lyn-grey400
-        @extend .lyn-body2-font
-        transform translateY(0.0625rem)
 
-    .radio
+    .lyn-radio
         display flex
-        justify-content center
         align-items center
-        max-width 1.25rem
-        max-height 1.25rem
-        
-        .circle
-            position relative
-            box-sizing border-box
+        width fit-content
+        gap 0.25rem
+        .radio-text
+            color $lyn-grey400
+            @extend .lyn-body2-font
+            transform translateY(0.0625rem)
+
+        .radio
             display flex
             justify-content center
             align-items center
-            width 1.25rem
-            height 1.25rem
-            &:before
-                content ''
-                position absolute
-                border $lyn-grey200 0.125rem solid
-                border-radius 10rem
-                left 0
-                right 0
-                top 0
-                bottom 0
-                lyn-transition-ease()
-            
-            &:after
-                content ''
-                position absolute
-                border-radius 10rem
-                left 0.25rem
-                right 0.25rem
-                top 0.25rem
-                bottom 0.25rem
-                background $lyn-primary-blue
-                transform scale(0)
-                lyn-transition-ease()
-
-        input
-            position absolute
             max-width 1.25rem
             max-height 1.25rem
-            opacity 0
-            &:checked + .circle
-                &:before
-                    border $lyn-primary-blue 0.125rem solid
-                &:after
-                    transform scale(1)
             
-            &:hover + .circle
+            .circle
+                position relative
+                box-sizing border-box
+                display flex
+                justify-content center
+                align-items center
+                width 1.25rem
+                height 1.25rem
                 &:before
-                    border $lyn-primary-blue 0.125rem solid
-                    shadow-extra-small()
+                    content ''
+                    position absolute
+                    border $lyn-grey200 0.125rem solid
+                    border-radius 10rem
+                    left 0
+                    right 0
+                    top 0
+                    bottom 0
+                    lyn-transition-ease()
+                
+                &:after
+                    content ''
+                    position absolute
+                    border-radius 10rem
+                    left 0.25rem
+                    right 0.25rem
+                    top 0.25rem
+                    bottom 0.25rem
+                    background $lyn-primary-blue
+                    transform scale(0)
+                    lyn-transition-ease()
 
-            &:focus + .circle
-                &:before
-                    border $lyn-primary-blue 0.125rem solid
-                    shadow-small-blue()
-
-    &.has-error
-        .radio
             input
-                +.circle
-                    &:before
-                        border $lyn-alert300 0.125rem solid
-
+                position absolute
+                max-width 1.25rem
+                max-height 1.25rem
+                opacity 0
                 &:checked + .circle
                     &:before
-                        border $lyn-alert300 0.125rem solid
+                        border $lyn-primary-blue 0.125rem solid
                     &:after
-                        background $lyn-alert300
+                        transform scale(1)
+                
+                &:hover + .circle
+                    &:before
+                        border $lyn-primary-blue 0.125rem solid
+                        shadow-extra-small()
+
+                &:focus + .circle
+                    &:before
+                        border $lyn-primary-blue 0.125rem solid
+                        shadow-small-blue()
+
+        &.has-error
+            .radio
+                input
+                    +.circle
+                        &:before
+                            border $lyn-alert300 0.125rem solid
+
+                    &:checked + .circle
+                        &:before
+                            border $lyn-alert300 0.125rem solid
+                        &:after
+                            background $lyn-alert300

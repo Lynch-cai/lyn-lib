@@ -11,6 +11,7 @@ const meta: Meta<typeof LynTextarea> = {
     argTypes: {
         columns: {},
         hasError: { control: "boolean" },
+        errorMsg: {},
         id: {},
         maxlength: {},
         placeholder: {},

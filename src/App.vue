@@ -21,6 +21,7 @@ import LynSwitch from "@/components/LynSwitch/LynSwitch.vue";
 import LynSearch from "@/components/LynSearch/LynSearch.vue";
 import LynSearchPappers from "./components/LynSearchPappers/LynSearchPappers.vue";
 import { Item } from "./components/LynSearch/types";
+import { nextTick } from "vue";
 
 export default {
     components: { RouterView, LynButton, LynButtonDropdown, LynInput, LynCheckbox, LynLoading, LynRadio, LynLink, LynSelect, LynTextarea, LynLabel, LynSwitch, LynSearch, LynSearchPappers },
@@ -66,6 +67,7 @@ export default {
             checkboxValue2: false,
 
             textareaValue: "",
+            textareaValue2: "",
 
             switchValue: false,
 
@@ -88,6 +90,8 @@ export default {
             searchSelectValue: {},
             searchValue: [],
             searchPappersItems: [] as Item[],
+            q: "",
+            blockDropdown: true,
         };
     },
     methods: {
@@ -108,6 +112,12 @@ export default {
                 this.searchPappersItems[1].tag = "CRM";
             }
         },
+    },
+    async mounted() {
+        await nextTick();
+        this.q = "11";
+        await nextTick();
+        this.blockDropdown = false;
     },
 };
 </script>
@@ -188,7 +198,7 @@ export default {
             {{ inputValue2 }}
             <LynInput :type="LynInputType.text" placeholder="test" v-model:value="inputValue2" />
             {{ inputValue3 }}
-            <LynInput :type="LynInputType.text" placeholder="test" v-model:value="inputValue3" :has-error="true" />
+            <LynInput :type="LynInputType.text" placeholder="test" v-model:value="inputValue3" :has-error="true" error-msg="Error message" />
             <LynInput :type="LynInputType.text" v-model:value="inputValue">
                 <template #icon-left><span class="icon-search-16px color-lyn-grey300"></span></template>
             </LynInput>
@@ -198,6 +208,8 @@ export default {
             <h2 class="lyn-h2-font">Textarea</h2>
             {{ textareaValue }}
             <LynTextarea placeholder="Insert text" v-model:value="textareaValue" />
+            {{ textareaValue2 }}
+            <LynTextarea error-msg="Error message" :has-error="true" placeholder="Insert text" v-model:value="textareaValue2" />
         </div>
 
         <div class="lyn-comp-box">
@@ -213,7 +225,7 @@ export default {
             <span>{{ radioValue }}</span>
             <LynRadio label="Radio1" name="form" id="radio1" radio-value="radio1" v-model:value="radioValue" />
             <LynRadio label="Radio2" name="form" id="radio2" radio-value="radio2" v-model:value="radioValue" />
-            <LynRadio label="Radio3" name="form" id="radio3" radio-value="radio3" v-model:value="radioValue" :has-error="true" />
+            <LynRadio label="Radio3" name="form" id="radio3" radio-value="radio3" v-model:value="radioValue" :has-error="true" error-msg="Error message" />
         </div>
 
         <div class="lyn-comp-box">
@@ -225,7 +237,7 @@ export default {
                 <option value="option_3">Option 3</option>
             </LynSelect>
             {{ selectValue2 }}
-            <LynSelect placeholder="Select an option" v-model:value="selectValue2" :has-error="true">
+            <LynSelect placeholder="Select an option" v-model:value="selectValue2" :has-error="true" error-msg="Error message">
                 <option value="option_1">Option 1</option>
                 <option value="option_2">Option 2</option>
                 <option value="option_3">Option 3</option>
@@ -259,9 +271,14 @@ export default {
             <LynSearch :items="searchItems" :is-loading="true" @select="log($event)" />
             <LynSearch :items="[]" :is-loading="true" @select="log($event)" />
             <LynSearch :items="[]" @select="log($event)" />
+            <LynSearch :block-dropdown="blockDropdown" :q="q" :items="[]" @select="log($event)" :has-error="true" error-msg="Error message" />
+
+            <button @click="q = '11'">Change la recherche</button>
+            <button @click="q = '22'">Change la recherche</button>
 
             <h2 class="lyn-h2-font">Search Pappers</h2>
             <LynSearchPappers v-model:select="searchSelectValue" v-model:search="searchValue" v-model:items="searchPappersItems" :max-result="5" />
+            <LynSearchPappers v-model:select="searchSelectValue" v-model:search="searchValue" v-model:items="searchPappersItems" :max-result="5" :has-error="true" error-msg="Error message" />
             {{ searchSelectValue }}
             <hr />
             {{ searchValue }}

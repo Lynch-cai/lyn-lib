@@ -10,6 +10,7 @@ const meta: Meta<typeof LynSelect> = {
     argTypes: {
         disabled: { control: "boolean" },
         hasError: { control: "boolean" },
+        errorMsg: {},
         id: {},
         placeholder: {},
         required: { control: "boolean" },
@@ -36,6 +37,7 @@ const Template: any = (args: any) => ({
             v-model:value="yourVariable"
             :disabled="args.disabled"
             :hasError="args.hasError"
+            :errorMsg="args.errorMsg"
             :placeholder="args.placeholder"
             :required="args.required"
             :size="args.size"
@@ -53,6 +55,7 @@ Default.args = {
     value: undefined,
     disabled: false,
     hasError: false,
+    errorMsg: "Error message",
     placeholder: "Select an option",
     required: false,
     size: Size.medium,
@@ -64,8 +67,21 @@ Small.args = {
     value: undefined,
     disabled: false,
     hasError: false,
+    errorMsg: "Error message",
     placeholder: "Select an option",
     required: false,
     size: Size.small,
+    id: null,
+};
+
+export const Error = Template.bind({});
+Error.args = {
+    value: undefined,
+    disabled: false,
+    hasError: true,
+    errorMsg: "Error message",
+    placeholder: "Select an option",
+    required: false,
+    size: Size.medium,
     id: null,
 };

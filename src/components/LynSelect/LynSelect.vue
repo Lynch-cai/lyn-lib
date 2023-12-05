@@ -1,8 +1,10 @@
 <script lang="ts">
 import { PropType, defineComponent } from "vue";
 import { Size } from "./types";
+import LynError from "@/components/LynError/LynError.vue";
 
 export default defineComponent({
+    components: { LynError },
     props: {
         disabled: {
             type: Boolean,
@@ -12,6 +14,7 @@ export default defineComponent({
             type: Boolean,
             default: false,
         },
+        errorMsg: String,
         id: String,
         placeholder: String,
         required: {
@@ -46,17 +49,21 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="lyn-select-container" :class="[size, { 'has-error': hasError }]">
-        <div class="select">
-            <span class="icon-chevron-down-16px angle-down"></span>
-            <select ref="select" :class="{ 'no-selection': !childValue }" v-model="childValue" :id="id" :required="required" :disabled="disabled">
-                <option :value="null" disabled selected>{{ placeholder }}</option>
-                <slot></slot>
-            </select>
+    <div class="lyn-select-container">
+        <div class="lyn-select" :class="[size, { 'has-error': hasError }]">
+            <div class="select">
+                <span class="icon-chevron-down-16px angle-down"></span>
+                <select ref="select" :class="{ 'no-selection': !childValue }" v-model="childValue" :id="id" :required="required" :disabled="disabled">
+                    <option :value="null" disabled selected>{{ placeholder }}</option>
+                    <slot></slot>
+                </select>
+            </div>
         </div>
+        <LynError :hasError="hasError" :errorMsg="errorMsg" />
     </div>
 </template>
 
 <style lang="stylus" scoped>
+@import "../LynError/lynError.styl"
 @import "./lynSelect.styl"
 </style>
