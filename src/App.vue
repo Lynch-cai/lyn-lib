@@ -95,7 +95,6 @@ export default {
             searchValue: [],
             searchPappersItems: [] as Item[],
             q: "",
-            blockDropdown: true,
         };
     },
     methods: {
@@ -118,11 +117,8 @@ export default {
         },
     },
     async mounted() {
-        this.blockDropdown = true;
         await nextTick();
         this.q = "11";
-        await nextTick();
-        this.blockDropdown = false;
     },
 };
 </script>
@@ -280,7 +276,7 @@ export default {
             <LynSearch :items="[]" @select="log($event)" />
 
             <form @submit.prevent="log('submit')">
-                <LynSearch :required="true" :block-dropdown="blockDropdown" :q="q" :items="[]" @select="log($event)" :has-error="false" error-msg="Error message" />
+                <LynSearch :required="true" :q="q" :items="[]" @select="log($event)" :has-error="false" error-msg="Error message" />
                 <button @click="q = '22'">Change la recherche</button>
                 <button @click="q = '11'">Change la recherche</button>
                 <LynButton>Submit</LynButton>

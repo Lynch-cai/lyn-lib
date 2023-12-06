@@ -25,10 +25,6 @@ export default defineComponent({
             type: String,
             default: "",
         },
-        blockDropdown: {
-            type: Boolean,
-            default: false,
-        },
         hasError: {
             type: Boolean,
             default: false,
@@ -61,6 +57,7 @@ export default defineComponent({
         childItems: [] as SearchDropdownItem[],
         timeout: null as any,
         lastSelectedItem: { data: {}, label: "" } as Item,
+        isFocused: false,
     }),
     emits: ["search", "select", "focus"],
     mounted() {
@@ -94,6 +91,36 @@ export default defineComponent({
             this.lastSelectedItem = this.items[index];
             this.$emit("select", this.lastSelectedItem);
         },
+        handleSearch() {
+            this.highlightDropdownItem();
+            if (this.childQ && this.isFocused) this.showDropdown = true;
+            else {
+                this.showDropdown = false;
+                return;
+            }
+
+            // Regarde si la valeur de recherche est la même que une des valeurs dans data de la dernière valeur sélectionnée, ça permet d'éviter de refetch
+            // if (this.lastSelectedItem && this.lastSelectedItem.data) {
+            //     const data = this.lastSelectedItem.data;
+            //     const dataValues = Object.values(data);
+            //     const found = dataValues.find((value) => {
+            //         if (typeof value === "string") return value.toLowerCase() === this.childQ.toLowerCase();
+            //         return false;
+            //     });
+            //     if (found) {
+            //         this.showDropdown = false;
+            //         return;
+            //     }
+            // }
+
+            this.isTyping = true;
+            this.lastSelectedItem = { data: {}, label: "" };
+            clearTimeout(this.timeout);
+            this.timeout = setTimeout(() => {
+                this.$emit("search", this.childQ);
+                this.isTyping = false;
+            }, 250); // Temps avant validation de l'input
+        },
         // Gère le marquage des valeurs qui se trouve à la fois dans la valeur de recherche et à la fois dans les items
         highlightDropdownItem() {
             if (this.childItems.length && !this.childQ) {
@@ -123,42 +150,19 @@ export default defineComponent({
             }
         },
         onFocus() {
-            if (this.childQ) this.showDropdown = true;
-            else this.showDropdown = false;
+            this.isFocused = true;
+        },
+        onBlur() {
+            this.isFocused = false;
         },
     },
 
     watch: {
         childQ() {
-            if (!this.blockDropdown) {
-                this.highlightDropdownItem();
-                if (this.childQ) this.showDropdown = true;
-                else {
-                    this.showDropdown = false;
-                    return;
-                }
-                // Regarde si la valeur de recherche est la même que une des valeurs dans data de la dernière valeur sélectionnée, ça permet d'éviter de refetch
-                if (this.lastSelectedItem && this.lastSelectedItem.data) {
-                    const data = this.lastSelectedItem.data;
-                    const dataValues = Object.values(data);
-                    const found = dataValues.find((value) => {
-                        if (typeof value === "string") return value.toLowerCase() === this.childQ.toLowerCase();
-                        return false;
-                    });
-                    if (found) {
-                        this.showDropdown = false;
-                        return;
-                    }
-                }
-
-                this.isTyping = true;
-                this.lastSelectedItem = { data: {}, label: "" };
-                clearTimeout(this.timeout);
-                this.timeout = setTimeout(() => {
-                    this.$emit("search", this.childQ);
-                    this.isTyping = false;
-                }, 250); // Temps avant validation de l'input
-            }
+            this.handleSearch();
+        },
+        isFocused() {
+            this.handleSearch();
         },
         q() {
             if (this.q !== this.childQ) {
@@ -168,9 +172,6 @@ export default defineComponent({
         items() {
             this.copyItemsLocally();
             this.highlightDropdownItem();
-        },
-        showDropdown() {
-            if (this.blockDropdown) this.showDropdown = false;
         },
     },
 });
@@ -190,6 +191,7 @@ export default defineComponent({
             :background="background"
             :required="required"
             @focus="onFocus()"
+            @blur="onBlur()"
         >
             <template #icon-left>
                 <span class="icon-search-16px color-lyn-grey300"></span>

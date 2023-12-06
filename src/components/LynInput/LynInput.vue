@@ -81,6 +81,7 @@ export default defineComponent({
             :step="step"
             :maxlength="maxlength"
             @focus="$emit('focus')"
+            @blur="$emit('blur')"
         />
         <LynError :hasError="hasError" :errorMsg="errorMsg" :size="size" />
     </div>
