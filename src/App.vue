@@ -6,7 +6,7 @@ import { Type as LynInputType } from "@/components/LynInput/types";
 import { Color as LynLoadingColor } from "@/components/LynLoading/types";
 import { FontWeight as LynLinkFontWeight, Size as LynLinkSize } from "@/components/LynLink/types";
 import { Type as LynButtonDropdownType, DropdownType as LynButtonDropdownDropdownType } from "@/components/LynButtonDropdown/types";
-
+import { Name as LynIconName, Size as LynIconSize, Color as LynIconColor } from "@/components/LynIcon/types";
 import LynButton from "@/components/LynButton/LynButton.vue";
 import LynButtonDropdown from "@/components/LynButtonDropdown/LynButtonDropdown.vue";
 import LynInput from "@/components/LynInput/LynInput.vue";
@@ -20,11 +20,12 @@ import LynLabel from "@/components/LynLabel/LynLabel.vue";
 import LynSwitch from "@/components/LynSwitch/LynSwitch.vue";
 import LynSearch from "@/components/LynSearch/LynSearch.vue";
 import LynSearchPappers from "./components/LynSearchPappers/LynSearchPappers.vue";
+import LynIcon from "./components/LynIcon/LynIcon.vue";
 import { Item } from "./components/LynSearch/types";
 import { nextTick } from "vue";
 
 export default {
-    components: { RouterView, LynButton, LynButtonDropdown, LynInput, LynCheckbox, LynLoading, LynRadio, LynLink, LynSelect, LynTextarea, LynLabel, LynSwitch, LynSearch, LynSearchPappers },
+    components: { RouterView, LynButton, LynButtonDropdown, LynInput, LynCheckbox, LynLoading, LynRadio, LynLink, LynSelect, LynTextarea, LynLabel, LynSwitch, LynSearch, LynSearchPappers, LynIcon },
     data() {
         return {
             // Types
@@ -35,6 +36,9 @@ export default {
             LynLinkSize,
             LynButtonDropdownType,
             LynButtonDropdownDropdownType,
+            LynIconName,
+            LynIconSize,
+            LynIconColor,
 
             dropdownButtons: [
                 {
@@ -146,7 +150,7 @@ export default {
             <LynButtonDropdown :type="LynButtonDropdownType.primary" :dropdown-type="LynButtonDropdownDropdownType.single" @click="log(1)">
                 Open dropdown
                 <template #dropdown>
-                    <LynButton :type="LynButtonType.tertiary" @click="log(2)"><span class="icon-save-16px"></span>Action 1</LynButton>
+                    <LynButton :type="LynButtonType.tertiary" @click="log(2)"><LynIcon :name="LynIconName['save']" :size="LynIconSize['16px']" />Action 1</LynButton>
                     <LynButton :type="LynButtonType.tertiary" @click="log(3)">Action 2</LynButton>
                     <LynButton :type="LynButtonType.tertiary" @click="log(4)">Action 3</LynButton>
                 </template>
@@ -154,7 +158,7 @@ export default {
             <LynButtonDropdown :type="LynButtonDropdownType.secondary" :dropdown-type="LynButtonDropdownDropdownType.single" @click="log(1)">
                 Open dropdown
                 <template #dropdown>
-                    <LynButton :type="LynButtonType.tertiary" @click="log(2)"><span class="icon-save-16px"></span>Action 1</LynButton>
+                    <LynButton :type="LynButtonType.tertiary" @click="log(2)"><LynIcon :name="LynIconName['save']" :size="LynIconSize['16px']" />Action 1</LynButton>
                     <LynButton :type="LynButtonType.tertiary" @click="log(3)">Action 2</LynButton>
                     <LynButton :type="LynButtonType.tertiary" @click="log(4)">Action 3</LynButton>
                 </template>
@@ -162,7 +166,7 @@ export default {
             <LynButtonDropdown :type="LynButtonDropdownType.primary" :dropdown-type="LynButtonDropdownDropdownType.split" @click="log(1)">
                 Action 0
                 <template #dropdown>
-                    <LynButton :type="LynButtonType.tertiary" @click="log(2)"><span class="icon-save-16px"></span>Action 1</LynButton>
+                    <LynButton :type="LynButtonType.tertiary" @click="log(2)"><LynIcon :name="LynIconName['save']" :size="LynIconSize['16px']" />Action 1</LynButton>
                     <LynButton :type="LynButtonType.tertiary" @click="log(3)">Action 2</LynButton>
                     <LynButton :type="LynButtonType.tertiary" @click="log(4)">Action 3 LONG TEXT</LynButton>
                 </template>
@@ -170,7 +174,7 @@ export default {
             <LynButtonDropdown :type="LynButtonDropdownType.primary" :dropdown-type="LynButtonDropdownDropdownType.split" @click="log(1)">
                 Action 0 LONG TEXT
                 <template #dropdown>
-                    <LynButton :type="LynButtonType.tertiary" @click="log(2)"><span class="icon-save-16px"></span>Action 1</LynButton>
+                    <LynButton :type="LynButtonType.tertiary" @click="log(2)"><LynIcon :name="LynIconName['save']" :size="LynIconSize['16px']" />Action 1</LynButton>
                     <LynButton :type="LynButtonType.tertiary" @click="log(3)">Action 2</LynButton>
                     <LynButton :type="LynButtonType.tertiary" @click="log(4)">Action 3</LynButton>
                 </template>
@@ -178,15 +182,15 @@ export default {
             <LynButtonDropdown :type="LynButtonDropdownType.secondary" :dropdown-type="LynButtonDropdownDropdownType.split" @click="log(1)">
                 Action 0
                 <template #dropdown>
-                    <LynButton :type="LynButtonType.tertiary" @click="log(2)"><span class="icon-save-16px"></span>Action 1</LynButton>
+                    <LynButton :type="LynButtonType.tertiary" @click="log(2)"><LynIcon :name="LynIconName['save']" :size="LynIconSize['16px']" />Action 1</LynButton>
                     <LynButton :type="LynButtonType.tertiary" @click="log(3)">Action 2</LynButton>
                     <LynButton :type="LynButtonType.tertiary" @click="log(4)">Action 3</LynButton>
                 </template>
             </LynButtonDropdown>
             <LynButtonDropdown :type="LynButtonDropdownType.primary" :dropdown-type="LynButtonDropdownDropdownType.single" :icon-only="true" @click="log(1)">
-                <span class="icon-plus-16px color-lyn-white"></span>
+                <LynIcon :name="LynIconName['plus']" :size="LynIconSize['16px']" :color="LynIconColor['white']" />
                 <template #dropdown>
-                    <LynButton :type="LynButtonType.tertiary" @click="log(2)"><span class="icon-save-16px"></span>Action 1</LynButton>
+                    <LynButton :type="LynButtonType.tertiary" @click="log(2)"><LynIcon :name="LynIconName['save']" :size="LynIconSize['16px']" />Action 1</LynButton>
                     <LynButton :type="LynButtonType.tertiary" @click="log(3)">Action 2</LynButton>
                     <LynButton :type="LynButtonType.tertiary" @click="log(4)">Action 3</LynButton>
                 </template>
@@ -201,7 +205,9 @@ export default {
             {{ inputValue3 }}
             <LynInput :type="LynInputType.text" placeholder="test" v-model:value="inputValue3" :has-error="true" error-msg="Error message" />
             <LynInput :type="LynInputType.text" v-model:value="inputValue">
-                <template #icon-left><span class="icon-search-16px color-lyn-grey300"></span></template>
+                <template #icon-left>
+                    <LynIcon :name="LynIconName['search']" :size="LynIconSize['16px']" :color="LynIconColor['grey300']" />
+                </template>
             </LynInput>
         </div>
 
@@ -283,6 +289,11 @@ export default {
             {{ searchSelectValue }}
             <hr />
             {{ searchValue }}
+        </div>
+
+        <div class="lyn-comp-box">
+            <h2 class="lyn-h2-font">Icons</h2>
+            <LynIcon :name="LynIconName['arrow-down']" :size="LynIconSize['16px']" :color="LynIconColor['primary-blue']" />
         </div>
     </div>
 </template>
