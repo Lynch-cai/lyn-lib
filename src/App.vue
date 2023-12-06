@@ -278,10 +278,13 @@ export default {
             <LynSearch :items="searchItems" :is-loading="true" @select="log($event)" />
             <LynSearch :items="[]" :is-loading="true" @select="log($event)" />
             <LynSearch :items="[]" @select="log($event)" />
-            <LynSearch :block-dropdown="blockDropdown" :q="q" :items="[]" @select="log($event)" :has-error="true" error-msg="Error message" />
 
-            <button @click="q = '11'">Change la recherche</button>
-            <button @click="q = '22'">Change la recherche</button>
+            <form @submit.prevent="log('submit')">
+                <LynSearch :required="true" :block-dropdown="blockDropdown" :q="q" :items="[]" @select="log($event)" :has-error="false" error-msg="Error message" />
+                <button @click="q = '22'">Change la recherche</button>
+                <button @click="q = '11'">Change la recherche</button>
+                <LynButton>Submit</LynButton>
+            </form>
 
             <h2 class="lyn-h2-font">Search Pappers</h2>
             <LynSearchPappers v-model:select="searchSelectValue" v-model:search="searchValue" v-model:items="searchPappersItems" :max-result="5" />

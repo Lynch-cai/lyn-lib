@@ -46,6 +46,10 @@ export default defineComponent({
             type: Boolean,
             default: false,
         },
+        required: {
+            type: Boolean,
+            default: false,
+        },
     },
     data: () => ({
         LynLoadingColor,
@@ -184,6 +188,7 @@ export default defineComponent({
             :placeholder="placeholder"
             ref="input"
             :background="background"
+            :required="required"
             @focus="onFocus()"
         >
             <template #icon-left>
