@@ -19,11 +19,39 @@ Package : https://github.com/orgs/coover-fr/packages/npm/package/lyn
     ```
 
 -   Installer la librairie :
+
     ```bash
     npm i @coover-fr/lyn@latest
     ```
 
-## Comment la mettre en ligne sur Netlify
+-   Importer les polices de la librairie (patch temporaire, si jamais vous avez une meilleure solution, n'hésitez pas à contribuer):
+
+    1/ Installer le plugin rollup-plugin-copy :
+
+    ```bash
+    npm i -D rollup-plugin-copy
+    ```
+
+    2/ Modifier le fichier `vite.config.js` pour ajouter copy dans les plugins:
+
+    ```
+    ...
+    import copy from "rollup-plugin-copy";
+
+    export default defineConfig({
+        plugins: [
+            copy({
+                targets: [{ src: "./node_modules/@coover-fr/lyn/dist/assets/lyn-fonts/*", dest: "public/assets/lyn-fonts" }],
+                hook: "buildStart",
+            }),
+        ],
+    }
+    ...
+    ```
+
+    Si vous n'utilisez pas Vite, il faut trouver un moyen de copier les polices de la librairie dans le dossier `public/assets/lyn-fonts`.
+
+## Comment mettre en ligne sur Netlify
 
 -   Créer un fichier `.npmrc-netlify` à la racine du projet :
 
