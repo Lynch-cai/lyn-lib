@@ -36,7 +36,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <button ref="button" class="lyn-button" :class="[type, size]" :disabled="isLoading || isDisabled">
+    <button type="button" ref="button" class="lyn-button" :class="[type, size]" :disabled="isLoading || isDisabled">
         <div class="button-text" :class="{ hide: isLoading }">
             <slot></slot>
         </div>
