@@ -11,3 +11,4 @@ export { default as LynSwitch } from "./LynSwitch/LynSwitch.vue";
 export { default as LynTextarea } from "./LynTextarea/LynTextarea.vue";
 export { default as LynSearch } from "./LynSearch/LynSearch.vue";
 export { default as LynSearchPappers } from "./LynSearchPappers/LynSearchPappers.vue";
+export { default as LynError } from "./LynError/LynError.vue";

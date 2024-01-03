@@ -21,11 +21,29 @@ import LynSwitch from "@/components/LynSwitch/LynSwitch.vue";
 import LynSearch from "@/components/LynSearch/LynSearch.vue";
 import LynSearchPappers from "./components/LynSearchPappers/LynSearchPappers.vue";
 import LynIcon from "./components/LynIcon/LynIcon.vue";
+import LynError from "./components/LynError/LynError.vue";
 import { Item } from "./components/LynSearch/types";
 import { nextTick } from "vue";
 
 export default {
-    components: { RouterView, LynButton, LynButtonDropdown, LynInput, LynCheckbox, LynLoading, LynRadio, LynLink, LynSelect, LynTextarea, LynLabel, LynSwitch, LynSearch, LynSearchPappers, LynIcon },
+    components: {
+        RouterView,
+        LynButton,
+        LynButtonDropdown,
+        LynInput,
+        LynCheckbox,
+        LynLoading,
+        LynRadio,
+        LynLink,
+        LynSelect,
+        LynTextarea,
+        LynLabel,
+        LynSwitch,
+        LynSearch,
+        LynSearchPappers,
+        LynIcon,
+        LynError,
+    },
     data() {
         return {
             // Types
@@ -294,6 +312,8 @@ export default {
             <h2 class="lyn-h2-font">Icons</h2>
             <LynIcon :name="LynIconName['arrow-down']" :size="LynIconSize['16px']" :color="LynIconColor['primary-blue']" />
         </div>
+
+        <LynError error-msg="test" :hasError="true" />
     </div>
 </template>
 

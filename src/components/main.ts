@@ -1,5 +1,5 @@
 import type { App } from "vue";
-import { LynButton, LynButtonDropdown, LynCheckbox, LynInput, LynLabel, LynLink, LynLoading, LynRadio, LynSelect, LynSwitch, LynTextarea, LynSearch, LynSearchPappers } from "@/components";
+import { LynButton, LynButtonDropdown, LynCheckbox, LynInput, LynLabel, LynLink, LynLoading, LynRadio, LynSelect, LynSwitch, LynTextarea, LynSearch, LynSearchPappers, LynError } from "@/components";
 
 export default {
     install: (app: App) => {
@@ -16,7 +16,8 @@ export default {
         app.component("LynTextarea", LynTextarea);
         app.component("LynSearch", LynSearch);
         app.component("LynSearchPappers", LynSearchPappers);
+        app.component("LynError", LynError);
     },
 };
 
-export { LynButton, LynButtonDropdown, LynCheckbox, LynInput, LynLabel, LynLink, LynLoading, LynRadio, LynSelect, LynSwitch, LynTextarea, LynSearch, LynSearchPappers };
+export { LynButton, LynButtonDropdown, LynCheckbox, LynInput, LynLabel, LynLink, LynLoading, LynRadio, LynSelect, LynSwitch, LynTextarea, LynSearch, LynSearchPappers, LynError };
