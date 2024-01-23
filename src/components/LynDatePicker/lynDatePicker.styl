@@ -1,0 +1,394 @@
+.lyn-datepicker-container
+    height fit-content
+    gap 0.25rem
+    display flex
+    flex-direction column
+    &.disabled
+        .el-input
+            .el-input__wrapper
+                pointer-events none
+                background $lyn-grey050
+                border 0.125rem solid $lyn-grey200
+
+    &.has-error
+        .el-input
+            .el-input__wrapper
+                border 0.125rem solid $lyn-alert300 !important
+                &:hover
+                    border-color $lyn-alert300 !important
+                &:active, &:focus-within
+                    border-color $lyn-alert300 !important
+
+    .el-input
+        width 100%
+        height 2.625rem
+        .el-input__wrapper
+            min-width inherit
+            display flex
+            align-items center
+            gap 0
+            border-radius 0.5rem
+            border solid 0.125rem $lyn-grey200
+            height 2.625rem
+            justify-content space-between
+            box-sizing border-box
+            padding 0
+            box-shadow none
+            transition all ease 0.2s !important
+            &:hover
+                border-color $lyn-grey300
+                lyn-shadow-extra-small()
+            &:active, &:focus-within
+                border-color $lyn-primary-blue !important
+                lyn-shadow-extra-small()
+            .el-input__inner
+                height 100%
+                padding 0.75rem 1rem
+                color $lyn-grey400
+                width 100%
+                border none
+                background transparent
+                height 42px !important
+                box-sizing border-box
+                outline none !important
+                @extend .lyn-body-font
+
+        .el-input__prefix-inner
+            display none !important
+
+        .el-input__suffix-inner
+            display none !important
+
+        
+.el-popper
+    lyn-shadow-small()
+    border 0.125rem solid $lyn-grey200 !important
+    border-radius 0.5rem !important
+
+    td
+        &.current
+            .el-date-table-cell
+                .el-date-table-cell__text
+                    background $lyn-primary-blue !important
+                    color $lyn-white !important
+
+        &.today
+            .el-date-table-cell
+                .el-date-table-cell__text
+                    color $lyn-primary-blue
+
+    .el-date-table__row
+        .today
+            .el-date-table-cell
+                &:active
+                    .el-date-table-cell__text
+                        color $lyn-white
+
+    .el-date-table-cell
+        color $lyn-primary-black
+        @extend .lyn-body2-font
+        &:hover
+            .el-date-table-cell__text
+                background $lyn-blue100 !important
+                color $lyn-primary-blue
+        &:active
+            .el-date-table-cell__text
+                background $lyn-primary-blue !important
+                color $lyn-white
+
+        .el-date-table-cell__text
+            lyn-transition-fast-ease()
+            border-radius 0.25rem !important
+            line-height 1.5625rem
+            color $lyn-grey400
+
+    .el-date-picker__next-btn, .el-date-picker__prev-btn
+        display flex
+
+
+    .d-arrow-left, .arrow-left, .d-arrow-right, .arrow-right
+        i.el-icon
+            display none
+
+    .d-arrow-left, .d-arrow-right
+        &:hover
+            &:before, &:after
+                background $lyn-primary-blue
+        position relative
+        &:before
+            position absolute
+            left -0.5px
+            -webkit-mask url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQgNkw4IDEwTDEyIDYiIHN0cm9rZT0iIzVBNjA2RiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==') no-repeat 50% 50%
+            mask url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQgNkw4IDEwTDEyIDYiIHN0cm9rZT0iIzVBNjA2RiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==') no-repeat 50% 50%
+            -webkit-mask-size cover
+            mask-size cover
+            content ''
+            transform rotate(90deg)
+            pointer-events none
+            display inline-block
+            background $lyn-grey400
+            width 1rem
+            height 1rem
+            lyn-transition-ease()
+        &:after
+            position absolute
+            left 4.5px
+            -webkit-mask url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQgNkw4IDEwTDEyIDYiIHN0cm9rZT0iIzVBNjA2RiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==') no-repeat 50% 50%
+            mask url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQgNkw4IDEwTDEyIDYiIHN0cm9rZT0iIzVBNjA2RiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==') no-repeat 50% 50%
+            -webkit-mask-size cover
+            mask-size cover
+            content ''
+            transform rotate(90deg)
+            pointer-events none
+            display inline-block
+            background $lyn-grey400
+            width 1rem
+            height 1rem
+            lyn-transition-ease()
+
+    .arrow-left, .arrow-right
+        &:hover
+            &:after
+                background $lyn-primary-blue
+        &:after
+            -webkit-mask url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQgNkw4IDEwTDEyIDYiIHN0cm9rZT0iIzVBNjA2RiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==') no-repeat 50% 50%
+            mask url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQgNkw4IDEwTDEyIDYiIHN0cm9rZT0iIzVBNjA2RiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==') no-repeat 50% 50%
+            -webkit-mask-size cover
+            mask-size cover
+            content ''
+            transform rotate(90deg)
+            pointer-events none
+            display inline-block
+            background $lyn-grey400
+            width 1rem
+            height 1rem
+            lyn-transition-ease()
+
+    .arrow-left, .d-arrow-left
+        &:before, &:after
+            transform rotate(90deg)
+
+    .arrow-right, .d-arrow-right
+        &:before, &:after
+            transform rotate(-90deg)
+
+    .el-date-picker__next-btn
+        .el-picker-panel__icon-btn
+            &:nth-child(2)
+                margin-right 0
+
+    .el-date-picker__prev-btn
+        .el-picker-panel__icon-btn
+            &:nth-child(2)
+                margin-right 0
+
+    .el-picker-panel__icon-btn 
+        &:nth-child(3), &:nth-child(2)
+            margin-right 0
+
+    .el-date-range-picker__header
+        margin-bottom 0.75rem
+
+        div
+            @extend .lyn-body2-semibold-font
+            height calc(100% + 0.1875rem)
+            line-height 1.9375rem
+
+
+    .el-picker-panel__icon-btn 
+        display flex
+        justify-content center
+        align-items center
+        width 1.5rem
+        height 1.5rem
+        background $lyn-white
+        border solid 0.125rem $lyn-grey100
+        border-radius 0.25rem
+        margin-top 0.1875rem
+        margin-right 0.5rem
+        color $lyn-primary-black
+        lyn-transition-fast-ease()
+        &:hover
+            background $lyn-grey100
+            border-color $lyn-grey200
+            color $lyn-primary-black
+        &:active
+            background $lyn-grey200
+            color $lyn-primary-blue
+        
+    .el-month-table
+        td
+            div
+                &:hover 
+                    span 
+                        background $lyn-grey050
+                &:active
+                    span
+                        background $lyn-grey100
+
+                span
+                    border-radius 99rem
+                    width 2.25rem !important
+                    height 2.25rem !important
+
+    .el-year-table
+        td
+            &:hover 
+                span 
+                    background $lyn-grey050
+            &:active
+                span
+                    background $lyn-grey100
+
+            span
+                border-radius 99rem
+                width 2.25rem !important
+                height 2.25rem !important
+
+    .el-picker-panel__sidebar+.el-picker-panel__body
+        margin-left 0
+
+    .el-picker-panel__body
+        min-width 20.1875rem !important
+        max-width 20.1875rem !important
+        width 20.1875rem !important
+        span.cell
+            display flex
+            justify-content center
+            align-items center
+            @extend .lyn-body2-font
+
+        th
+            @extend .lyn-body2-font
+        .el-date-picker__header
+            margin 0.75rem 1rem
+
+            .el-date-picker__header-label
+                padding 0.5rem 0.125rem
+                @extend .lyn-body2-semibold-font
+                &:hover
+                    color $lyn-primary-blue
+
+            .el-date-picker__prev-btn
+                float left
+
+            .el-date-picker__next-btn
+                float right
+
+        .el-picker-panel__content
+            .el-year-table, .el-month-table
+                td
+                    &.today
+                        span
+                            color $lyn-primary-blue
+
+                    &.current
+                        span
+                            color $lyn-primary-blue !important
+                            background $lyn-blue050 !important
+
+                    &:hover
+                        span
+                            background $lyn-grey050
+                            color $lyn-primary-blue
+
+                    &:active
+                        span
+                            background $lyn-grey100
+                            color $lyn-primary-blue
+
+    .el-date-table
+        tr:nth-child(1)
+            th
+                color $lyn-grey300
+                font-size 0
+                &:first-letter
+                    font-size 0.75rem
+
+    .el-date-table 
+        td.in-range
+            .el-date-table-cell
+                background $lyn-blue050
+                &:hover
+                    background $lyn-blue050
+
+        td.start-date
+            .el-date-table-cell
+                border-top-left-radius 0.25rem
+                border-bottom-left-radius 0.25rem
+
+        td.end-date
+            .el-date-table-cell
+                border-top-right-radius 0.25rem
+                border-bottom-right-radius 0.25rem
+
+    .el-picker-panel__content.el-date-range-picker__content.is-right
+        display none !important
+
+    .el-picker-panel__content
+        border-radius 0.5rem
+
+    .el-date-range-picker__content.is-left
+        border none
+
+    .el-date-range-picker__content
+        width 100%
+
+    .el-date-range-picker.has-sidebar
+        width initial
+
+    .el-picker-panel__sidebar
+        display none
+        border-top-left-radius 0.5rem
+        border-bottom-left-radius 0.5rem
+        width fit-content
+        gap 0.25rem
+        padding 0.25rem
+        border-right 0.125rem solid $lyn-grey100
+
+    .el-picker-panel__shortcut
+        width 12.5rem
+        white-space nowrap
+        color $lyn-grey400
+        padding 0.5rem
+        box-sizing border-box
+        lyn-transition-fast-ease()
+        &:hover, &:active
+            background $lyn-grey050
+            border-radius 0.25rem
+            @extend .lyn-body2-semibold-font
+            line-height 1.75rem
+            width 100%
+
+
+    .el-range__close-icon
+        display none
+
+    .el-range__icon
+        display none
+
+    .el-date-editor--daterange
+        @extend .lyn-body2-semibold-font
+        border-radius 0.5rem
+        width auto !important
+        padding-left 0.375rem !important
+        padding-right 0.375rem !important
+
+    .el-range-editor.el-input__wrapper
+        box-shadow none
+        lyn-transition-ease()
+
+        &.is-active
+            border 0.125rem solid $lyn-primary-blue
+        
+        .el-range-separator
+            flex initial !important
+            padding 0 0.125rem
+
+        .el-range-input
+            width 5rem
+
+    &.is-light .el-popper__arrow
+        &:before
+            border-color $lyn-grey200
+            border-width 0.125rem

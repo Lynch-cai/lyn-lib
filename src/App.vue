@@ -7,6 +7,7 @@ import { Color as LynLoadingColor } from "@/components/LynLoading/types";
 import { FontWeight as LynLinkFontWeight, Size as LynLinkSize } from "@/components/LynLink/types";
 import { Type as LynButtonDropdownType, DropdownType as LynButtonDropdownDropdownType } from "@/components/LynButtonDropdown/types";
 import { Name as LynIconName, Size as LynIconSize, Color as LynIconColor } from "@/components/LynIcon/types";
+import { Item } from "./components/LynSearch/types";
 import LynButton from "@/components/LynButton/LynButton.vue";
 import LynButtonDropdown from "@/components/LynButtonDropdown/LynButtonDropdown.vue";
 import LynInput from "@/components/LynInput/LynInput.vue";
@@ -22,7 +23,7 @@ import LynSearch from "@/components/LynSearch/LynSearch.vue";
 import LynSearchPappers from "./components/LynSearchPappers/LynSearchPappers.vue";
 import LynIcon from "./components/LynIcon/LynIcon.vue";
 import LynError from "./components/LynError/LynError.vue";
-import { Item } from "./components/LynSearch/types";
+import LynDatePicker from "./components/LynDatePicker/LynDatePicker.vue";
 import { nextTick } from "vue";
 
 export default {
@@ -43,6 +44,7 @@ export default {
         LynSearchPappers,
         LynIcon,
         LynError,
+        LynDatePicker,
     },
     data() {
         return {
@@ -113,6 +115,8 @@ export default {
             searchValue: [],
             searchPappersItems: [] as Item[],
             q: "",
+
+            datePickerValue: new Date(),
         };
     },
     methods: {
@@ -223,6 +227,7 @@ export default {
                     <LynIcon :name="LynIconName['search']" :size="LynIconSize['16px']" :color="LynIconColor['grey300']" />
                 </template>
             </LynInput>
+            <LynInput :type="LynInputType.password" v-model:value="inputValue" />
         </div>
 
         <div class="lyn-comp-box">
@@ -314,6 +319,12 @@ export default {
         </div>
 
         <LynError error-msg="test" :hasError="true" />
+
+        <div class="lyn-comp-box">
+            <h2 class="lyn-h2-font">Datepickers</h2>
+            {{ datePickerValue }}
+            <LynDatePicker format="DD/MM/YYYY" placeholder="01/01/2024" v-model:value="datePickerValue" :has-error="true" error-msg="Error message" />
+        </div>
     </div>
 </template>
 

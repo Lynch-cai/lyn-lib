@@ -1,6 +1,7 @@
 export { default as LynButton } from "./LynButton/LynButton.vue";
 export { default as LynButtonDropdown } from "./LynButtonDropdown/LynButtonDropdown.vue";
 export { default as LynCheckbox } from "./LynCheckbox/LynCheckbox.vue";
+export { default as LynDatePicker } from "./LynDatePicker/LynDatePicker.vue";
 export { default as LynInput } from "./LynInput/LynInput.vue";
 export { default as LynLabel } from "./LynLabel/LynLabel.vue";
 export { default as LynLink } from "./LynLink/LynLink.vue";

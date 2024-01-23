@@ -16,7 +16,7 @@ export class StorybookSourceUtils {
         return source;
     };
 
-    static convertValueToModelValue = (source: string, type: "string" | "boolean" | "number") => {
+    static convertValueToModelValue = (source: string, type: "string" | "boolean" | "number" | "date") => {
         const regex = new RegExp(`[: ]value`, "g");
         const match = regex.exec(source);
         let formatedType = "string";
