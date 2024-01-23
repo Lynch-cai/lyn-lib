@@ -1,25 +1,29 @@
 <template>
     <div class="lyn-datepicker-container" :class="{ 'has-error': hasError, disabled: disabled }">
-        <ElDatePicker
-            :id="id"
-            @change="$emit('change', childValue)"
-            :placeholder="placeholder || childPlaceholder"
-            v-model="childValue"
-            :format="format || 'DD/MM/YYYY'"
-            :disabledDate="disabledDate"
-        />
+        <ElConfigProvider :locale="locale">
+            <ElDatePicker
+                :id="id"
+                @change="$emit('change', childValue)"
+                :placeholder="placeholder || childPlaceholder"
+                v-model="childValue"
+                :format="format || 'DD/MM/YYYY'"
+                :disabledDate="disabledDate"
+            />
+        </ElConfigProvider>
         <LynError :hasError="hasError" :errorMsg="errorMsg" />
     </div>
 </template>
 <script lang="ts">
-import { ElDatePicker } from "element-plus";
+import { ElDatePicker, ElConfigProvider } from "element-plus";
+// @ts-ignore
+import langFr from 'element-plus/dist/locale/fr.mjs';
 import { defineComponent } from "vue";
 import LynError from "@/components/LynError/LynError.vue";
 import "element-plus/es/components/date-picker/style/css"
 
 export default defineComponent({
     emits: ["change", "update:value"],
-    components: { ElDatePicker, LynError },
+    components: { ElDatePicker, ElConfigProvider, LynError },
     props: {
         placeholder: String,
         value: Date,
@@ -35,6 +39,11 @@ export default defineComponent({
         id: String,
         disabledDate: Function,
         format: String,
+    },
+    setup() {
+        return {
+            locale: langFr
+        }
     },
     data() {
         return {
