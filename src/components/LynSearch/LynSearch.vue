@@ -130,8 +130,19 @@ export default defineComponent({
             } else if (typeof this.childQ === "string" && this.childQ.length > 0) {
                 for (const item of this.childItems) {
                     const res = [];
-                    const lowerText = item.label.toLowerCase();
-                    const lowerValue = typeof this.childQ === "string" ? this.childQ.toLowerCase().trim() : "";
+                    const lowerText = item.label
+                        .normalize("NFD")
+                        .replace(/\p{Diacritic}/gu, "")
+                        .toLowerCase();
+                    const lowerValue =
+                        typeof this.childQ === "string"
+                            ? this.childQ
+                                  .normalize("NFD")
+                                  .replace(/\p{Diacritic}/gu, "")
+                                  .toLowerCase()
+                                  .trim()
+                            : "";
+
                     let startIndex = 0;
                     while (startIndex < lowerText.length) {
                         const index = lowerText.indexOf(lowerValue, startIndex);
